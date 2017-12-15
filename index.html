@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" name="Description" content="Almagest lets you plan your stargazing or astrophotography trips using one simple interface combining: light pollution maps, sunrise and sunset times, moonrise and moonset times, moon phase and illumination, and 5-day forecast data.">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Almagest</title>
+
+	<!-- STYLES -->
+
+		<!-- Fonts & Icons -->
+			<link href="https://fonts.googleapis.com/css?family=Montserrat:200,400,600" rel="stylesheet">	
+			<link href="https://use.fontawesome.com/releases/v5.0.0/css/all.css" rel="stylesheet">
+
+		<!-- Stylesheets -->
+			<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+			<link rel="stylesheet" href="main.css">
+			<link rel="stylesheet" href="gridrules.css">
+</head>
+<body>
+	<nav role="navigation">
+		<p>Navbar</p>
+	</nav>
+
+	<header role="banner">
+		<h1>Almagest</h1>
+		<ol>
+			<li>Find a spot</li>
+			<li>Pick a date</li>
+			<li>Check conditions</li>
+		</ol>
+	</header>
+
+	<main>
+		<div class="row">
+			<div class="col-6">
+				<!-- MAP -->
+				<div id="map"></div>
+				<script>
+					var map;
+					function initMap() {
+						map = new google.maps.Map(document.getElementById('map'), {
+							center: {lat: -34.397, lng: 150.644},
+							zoom: 8
+						});
+					}
+				</script>
+			</div>
+			<div class="col-6">
+				<!-- DATE SELECT -->
+				<input type="DATE">
+
+				<!-- SUN & MOON -->
+				<section class="sunInfo">
+					<p>Sunrise: <span class="js-sunrise">00:00</span></p>
+					<p>Sunset: <span class="js-sunset">00:00</span></p>
+				</section>
+				<section class="moonInfo">
+					<p>Moon Phase: <span class="js-moonPhase">PHASE</span></p>
+					<p>Illumination: <span class="js-illumination">00%</span></p>
+					<p>Moonrise: <span class="js-moonRise">00:00</span></p>
+					<p>Moonset: <span class="js-moonSet">00:00</span></p>
+				</section>
+				<!-- FORECAST -->
+				<section class="forecast">
+					<p>Cloudcover<span class="js-cloudConditions">Clear </span><span class="js-cloudCover">(00%)</span></p>
+					<p>Temperature<span class="js-temp">00/00</span></p>
+					<p>Humidity<span class="js-humidity">00%</span></p>
+				</section>
+			</div>
+		</div>
+
+	</main>
+
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhzMPUFxKG3VTooZrZ0ZKU_9zy3cCWJJE&callback=initMap"
+    async defer></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="index.js"></script>
+</body>
+</html>
