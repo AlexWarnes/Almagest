@@ -34,57 +34,34 @@
 		<div class="row">
 			<div class="col-6">
 				<!-- MAP -->
+				<h3>1. Click on the map to select a stargazing location</h3>
 				<div id="map"></div>
-				<script>
-					function initMap() {
-						var map = new google.maps.Map(document.getElementById('map'), {
-							center: {lat: 38.80, lng: -90.04},
-							zoom: 4
-						});
-
-						var northAmericaBounds = {
-							north: 55.0503989366652,
-							south: 9.172460840886574,
-							east: -59.47565462840578,
-							west: -126.0916698624644
-						};
-
-						var northAmericaOverlay = new google.maps.GroundOverlay('https://raw.githubusercontent.com/AlexWarnes/Almagest/master/Assets/ANSB_NorthAmerica_30p.png', northAmericaBounds);
-
-						var northernSAmericaBounds = {
-							north: 13.26350443207604,
-							south: -14.80364876331585,
-							east: -33.38588240467166,
-							west: -82.04309132974223
-						};
-
-						var northernSAmericaOverlay = new google.maps.GroundOverlay('https://raw.githubusercontent.com/AlexWarnes/Almagest/master/Assets/ANSB_NSouthAmerica_30p.png', northernSAmericaBounds);
-						
-						northAmericaOverlay.setMap(map);
-						northernSAmericaOverlay.setMap(map);
-					}
-				</script>
 			</div>
 			<div class="col-6">
 				<!-- DATE SELECT -->
-				<input type="DATE">
+				<h3>2. Select a date</h3>
+				<input type="DATE" id="datePicked">
+				<h3>3. And check conditions!</h3>
+				<button role="button" class="checkConditionsButton">Check Conditions</button>
 
 				<!-- SUN & MOON -->
 				<section class="sunInfo">
-					<p>Sunrise: <span class="js-sunrise">00:00</span></p>
-					<p>Sunset: <span class="js-sunset">00:00</span></p>
+					<p>Sunrise: <span class="js-sunrise"></span></p>
+					<p>Sunset: <span class="js-sunset"></span></p>
 				</section>
 				<section class="moonInfo">
-					<p>Moon Phase: <span class="js-moonPhase">PHASE</span></p>
-					<p>Illumination: <span class="js-illumination">00%</span></p>
-					<p>Moonrise: <span class="js-moonRise">00:00</span></p>
-					<p>Moonset: <span class="js-moonSet">00:00</span></p>
+					<p>Moonrise: <span class="js-moonRise"></span></p>
+					<p>Moonset: <span class="js-moonSet"></span></p>
+					<p>Moon Phase: <span class="js-moonPhase">:(</span></p>
+					<p>Illumination: <span class="js-illumination">:(</span></p>
 				</section>
+
 				<!-- FORECAST -->
 				<section class="forecast">
-					<p>Cloudcover<span class="js-cloudConditions">Clear </span><span class="js-cloudCover">(00%)</span></p>
-					<p>Temperature<span class="js-temp">00/00</span></p>
-					<p>Humidity<span class="js-humidity">00%</span></p>
+					<!-- consider doing hourly clouds 7pm-11pm -->
+					<p>Evening Clouds: <span class="js-cloudConditions"></span> <span class="js-cloudCover"></span></p>
+					<p>Temperature: <span class="js-temp"></span></p>
+					<p>Humidity: <span class="js-humidity"></span></p>
 				</section>
 			</div>
 		</div>
