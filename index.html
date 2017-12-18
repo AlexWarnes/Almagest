@@ -36,41 +36,32 @@
 				<!-- MAP -->
 				<div id="map"></div>
 				<script>
-
 					function initMap() {
 						var map = new google.maps.Map(document.getElementById('map'), {
 							center: {lat: 38.80, lng: -90.04},
 							zoom: 4
 						});
 
-						// var kmlLayer = new google.maps.KmlLayer({
-						// 	url: 'https://raw.githubusercontent.com/AlexWarnes/Almagest/master/Assets/ANSB_NorthAmerica.kml',
-						// 	map: map,
-						// 	clickable: false,
-						// 	preserveViewport: true,
-						// });
-	
-						// map.addListener('click', function(event) {
-						// 	// event.preventDefault();
-						// 	console.log(event.latLng());//not working
-						// // 	GET GEOCODE???
-						
-
-				//TEST Ground Overlay
-						// var northAmericaOverlay; 
-						var imageBounds = {
+						var northAmericaBounds = {
 							north: 55.0503989366652,
 							south: 9.172460840886574,
 							east: -59.47565462840578,
 							west: -126.0916698624644
 						};
 
-						var northAmericaOverlay = new google.maps.GroundOverlay('https://raw.githubusercontent.com/AlexWarnes/Almagest/master/Assets/ANSB_NorthAmerica_30p.png', imageBounds);
+						var northAmericaOverlay = new google.maps.GroundOverlay('https://raw.githubusercontent.com/AlexWarnes/Almagest/master/Assets/ANSB_NorthAmerica_30p.png', northAmericaBounds);
+
+						var northernSAmericaBounds = {
+							north: 13.26350443207604,
+							south: -14.80364876331585,
+							east: -33.38588240467166,
+							west: -82.04309132974223
+						};
+
+						var northernSAmericaOverlay = new google.maps.GroundOverlay('https://raw.githubusercontent.com/AlexWarnes/Almagest/master/Assets/ANSB_NSouthAmerica_30p.png', northernSAmericaBounds);
+						
 						northAmericaOverlay.setMap(map);
-						// northAmericaOverlay.setOpacity(opacity:0.4);
-
-					// setOpacity(opacity:number)
-
+						northernSAmericaOverlay.setMap(map);
 					}
 				</script>
 			</div>
