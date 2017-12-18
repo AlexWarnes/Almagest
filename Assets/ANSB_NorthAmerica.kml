@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<GroundOverlay>
+	<name>North America Artificial Night Sky Brightness</name>
+	<description>Artificial night sky brightness for North America caused by exterior lights shining into the sky. http://www.lightpollution.it/dmsp/</description>
+	<color>5effffff</color>
+	<Icon>
+		<href>ANSB_NorthAmerica_30p.png</href>
+		<viewBoundScale>0.75</viewBoundScale>
+	</Icon>
+	<LatLonBox>
+		<north>55.0503989366652</north>
+		<south>9.172460840886574</south>
+		<east>-59.47565462840578</east>
+		<west>-126.0916698624644</west>
+	</LatLonBox>
+</GroundOverlay>
+</kml>
