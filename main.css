@@ -33,6 +33,12 @@ header {
 	height: 400px;
 }
 
+#mapSearch {
+	width: 90%;
+	font-size: 20px;
+	padding: 5px;
+}
+
 .sunInfo {
 	margin: 5px;
 	padding: 3px;

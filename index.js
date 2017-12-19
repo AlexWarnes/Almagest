@@ -1,11 +1,55 @@
 'use strict';
 
 let userSpot = [];
+let marker = null;
 
 function initMap() {
-	const map = new google.maps.Map(document.getElementById('map'), {
+	var map = new google.maps.Map(document.getElementById('map'), {
 		center: {lat: 38.80, lng: -90.04},
-		zoom: 4
+		zoom: 4,
+		fullscreenControl: false,
+		mapTypeControlOptions: {
+			style: google.maps.MapTypeControlStyle.DEFAULT,
+			position: google.maps.ControlPosition.BOTTOM_CENTER
+		}
+	});
+
+	var input = document.getElementById('mapSearch');
+	var searchBox = new google.maps.places.SearchBox(input);
+	map.controls[google.maps.ControlPosition.TOP_CENTER].push(input);
+
+	// Listen for the event fired when the user selects a prediction and retrieve
+	// more details for that place.
+	searchBox.addListener('places_changed', function() {
+		var places = searchBox.getPlaces();
+		if (places.length == 0) {
+			return;
+		}
+
+		// For each place, get the icon, name and location.
+		var bounds = new google.maps.LatLngBounds();
+		places.forEach(function(place) {
+			if (!place.geometry) {
+			console.log("Returned place contains no geometry");
+			return;
+			}
+		
+			var icon = {
+				url: place.icon,
+				size: new google.maps.Size(71, 71),
+				origin: new google.maps.Point(0, 0),
+				anchor: new google.maps.Point(17, 34),
+				scaledSize: new google.maps.Size(25, 25)
+			};
+
+			if (place.geometry.viewport) {
+				// Only geocodes have viewport.
+				bounds.union(place.geometry.viewport);
+			} else {
+				bounds.extend(place.geometry.location);
+			}
+		});
+		map.fitBounds(bounds);
 	});
 
 	const northAmericaBounds = {
@@ -34,7 +78,7 @@ function initMap() {
 
 	let update_timeout = null;
 
-	//Anywhere on the map without an overlay
+	//Clicks anywhere on the map without an overlay
 	map.addListener('click', function(e) {
 		update_timeout = setTimeout(function(){
 			userSpot = [];
@@ -48,7 +92,7 @@ function initMap() {
 		clearTimeout(update_timeout);
 	});
 
-	//Anywhere on the North America overlay
+	//Clicks anywhere on the North America overlay
 	northAmericaOverlay.addListener('click', function(e) {
 		update_timeout = setTimeout(function(){
 			userSpot = [];
@@ -62,7 +106,7 @@ function initMap() {
 		clearTimeout(update_timeout);
 	});
 
-	//Anywhere on the northern South America overlay
+	//Clicks anywhere on the northern South America overlay
 	northernSAmericaOverlay.addListener('click', function(e) {
 		update_timeout = setTimeout(function(){
 			userSpot = [];
@@ -74,25 +118,36 @@ function initMap() {
 
 	northernSAmericaOverlay.addListener('dblclick', function(event) {
 		clearTimeout(update_timeout);
+	});	
+}
+
+//ADDING A MARKER
+	//If there is no marker when this function is called, then 
+	//we create one at the click point latLng that is passed when 
+	//called (see click events above). Or else just set the position
+	//of marker that already exists to the new latLng of click.
+function placeMarker(latLng, map) {
+	if (!marker) {
+		marker = new google.maps.Marker({
+			position: latLng,
+			map: map,
+			draggable: true
+		});
+		console.log(latLng);
+	} else {
+		marker.setPosition(latLng);
+		console.log(latLng);
+	}
+	//Add a listener to our new marker that changes the userSpot 
+	//latLng if the marker is dragged. The page initializes without
+	//a marker, therefore we cannot add this listener until we
+	//create one, which is why it's inside this function
+	marker.addListener('dragend', function (e) { 
+		userSpot = [];
+		console.log(e.latLng.lat() + ', ' + e.latLng.lng());
+		userSpot.push(e.latLng.lat(), e.latLng.lng())
 	});
 }
-
-function placeMarker(latLng, map) {
-	console.log(latLng);
-	var marker = new google.maps.Marker({
-		position: latLng,
-		map: map,
-		draggable: true
-		});
-}
-
-// button on click
-// get sundata using userSpot and $('#datePicked').val();
-// 	render that data
-// 		display that data
-// get forecast data using userSpot and $('#datePicked').val();
-// 	render that data
-// 		display that data
 
 function checkConditions() {
 	$('.checkConditionsButton').on('click', function(event) {

@@ -35,6 +35,7 @@
 			<div class="col-6">
 				<!-- MAP -->
 				<h3>1. Click on the map to select a stargazing location</h3>
+				<input id="mapSearch" class="controls" type="text" placeholder="Search for a place">
 				<div id="map"></div>
 			</div>
 			<div class="col-6">
@@ -67,9 +68,8 @@
 		</div>
 
 	</main>
-
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhzMPUFxKG3VTooZrZ0ZKU_9zy3cCWJJE&callback=initMap"
-    async defer></script>
+	
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhzMPUFxKG3VTooZrZ0ZKU_9zy3cCWJJE&libraries=places&callback=initMap" async defer></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script type="text/javascript" src="index.js"></script>
 </body>
