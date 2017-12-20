@@ -58,7 +58,7 @@ function initMap() {
 		east: -59.47565462840578,
 		west: -126.0916698624644
 	};
-	const northAmericaOverlay = new google.maps.GroundOverlay('https://raw.githubusercontent.com/AlexWarnes/Almagest/master/Assets/ANSB_NorthAmerica_30p.png', northAmericaBounds);
+	const northAmericaOverlay = new google.maps.GroundOverlay('https://raw.githubusercontent.com/AlexWarnes/Almagest/master/Assets/ANSB_NorthAmerica_30p_optimizilla.png', northAmericaBounds);
 
 	const northernSAmericaBounds = {
 		north: 13.26350443207604,
@@ -66,7 +66,7 @@ function initMap() {
 		east: -33.38588240467166,
 		west: -82.04309132974223
 	};
-	const northernSAmericaOverlay = new google.maps.GroundOverlay('https://raw.githubusercontent.com/AlexWarnes/Almagest/master/Assets/ANSB_NSouthAmerica_30p.png', northernSAmericaBounds);
+	const northernSAmericaOverlay = new google.maps.GroundOverlay('https://raw.githubusercontent.com/AlexWarnes/Almagest/master/Assets/ANSB_NSouthAmerica_30p_optimizilla.png', northernSAmericaBounds);
 	
 	northAmericaOverlay.setMap(map);
 	northernSAmericaOverlay.setMap(map);
