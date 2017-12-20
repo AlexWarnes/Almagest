@@ -8,7 +8,7 @@
 	<!-- STYLES -->
 
 		<!-- Fonts & Icons -->
-			<link href="https://fonts.googleapis.com/css?family=Montserrat:200,400,600" rel="stylesheet">	
+			<link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:300|Montserrat:200,300,400" rel="stylesheet">
 			<link href="https://use.fontawesome.com/releases/v5.0.0/css/all.css" rel="stylesheet">
 
 		<!-- Stylesheets -->
@@ -28,6 +28,7 @@
 
 	<header role="banner">
 		<h1>Almagest</h1>
+		<p>Plan your stargazing in three easy steps.</p>
 		<ol>
 			<li>Find a spot</li>
 			<li>Pick a date</li>
@@ -35,13 +36,17 @@
 		</ol>
 	</header>
 
-	<main>
+	<main role="main">
 		<!-- MAP -->
 		<div class="row">
 			<div class="col-12">
-				<h3>1. Click to drop a marker on your stargazing location</h3>
-				<input id="mapSearch" class="controls" type="text" placeholder="Search to jump to an area">
-				<div id="map"></div>
+				<section role="region" class="mapSection">
+					<h3>1. Click to drop a marker on your stargazing location</h3>
+					<p>Use the light pollution overlay to find a place near you with dark skies. Coverage here is limited to parts of North, Central, and South America. For worldwide coverage, see <a href="https://www.lightpollutionmap.info/#zoom=4&lat=5759860&lon=1619364&layers=B0FFFTFFFF" target="_blank">this site</a>.</p>
+					<input id="mapSearch" class="controls" type="text" placeholder="Search to jump to an area">
+					<div id="map"></div>
+					<p class="citation">Source: <a href="http://advances.sciencemag.org/content/2/6/e1600377">The New World Atlas of Artificial Night Sky Brightness</a></p>
+				</section>
 			</div>
 		</div>
 
@@ -59,22 +64,20 @@
 		</div>
 
 		<div class="row">
-
 			<!-- SUN DATA -->
 			<div class="col-4">
-				<section class="sunInfo conditionBox">
+				<section role="region" class="sunInfo conditionBox">
 					<div class="conditionHeader">
 						<img class="conditionIcon" src="./Assets/sun.png" alt="sun">
 						<h2>Sun Info</h2>
 					</div>
 					<p>Sunrise: <span class="js-sunrise">--</span></p>
 					<p>Sunset: <span class="js-sunset">--</span></p>
+					<p class="citation">Source: <a href="https://sunrise-sunset.org/">Sunrise-Sunset</a></p>
 				</section>
-			</div>
 
 			<!-- MOON DATA -->
-			<div class="col-4">
-				<section class="moonInfo conditionBox">
+				<section role="region" class="moonInfo conditionBox">
 					<div class="conditionHeader">
 						<img class="conditionIcon" src="./Assets/moon.png" alt="moon">
 						<h2>Moon Info</h2>
@@ -83,33 +86,32 @@
 					<p>Moonset: <span class="js-moonSet">--</span></p>
 					<!-- <p>Moon Phase: <span class="js-moonPhase">:(</span></p>
 					<p>Illumination: <span class="js-illumination">:(</span></p> -->
+					<p class="citation">Source: <a href="https://www.apixu.com/">APIXU</a></p>
 				</section>
 			</div>
-			
-		</div>
+
 			<!-- FORECAST -->
-			<div class="row">
-				<div class="col-6">
-					<section class="forecast conditionBox">
-						<!-- consider doing hourly clouds 7pm-11pm -->
-						<div class="conditionHeader">
-							<img class="conditionIcon" src="./Assets/clouds.png" alt="clouds">
-							<h2>Forecast</h2>
-						</div>
-						<p>Evening Cloud Cover</p>
-						<ul class="cloudList">
-							<li class="cloudTime"><img class="icon cloudIcon7">7pm: <span class="js-clouds7">--</span> <span class="js-cloudCover7">--</span></li>
-							<li class="cloudTime"><img class="icon cloudIcon8"><span class="icon cloudIcon8"></span>8pm: <span class="js-clouds8">--</span> <span class="js-cloudCover8">--</span></li>
-							<li class="cloudTime"><img class="icon cloudIcon9"><span class="icon cloudIcon9"></span>9pm: <span class="js-clouds9">--</span> <span class="js-cloudCover9">--</span></li>
-							<li class="cloudTime"><img class="icon cloudIcon10"><span class="icon cloudIcon10"></span>10pm: <span class="js-clouds10">--</span> <span class="js-cloudCover10">--</span></li>
-							<li class="cloudTime"><img class="icon cloudIcon11"><span class="icon cloudIcon11"></span>11pm: <span class="js-clouds11">--</span> <span class="js-cloudCover11">--</span></li>
-						</ul>
-						<!-- <span class="js-cloudConditions"></span> <span class="js-cloudCover"></span></p> -->
-						<p>Temperature: <span class="js-temp">--</span></p>
-						<p>Humidity: <span class="js-humidity">--</span></p>
-					</section>
-				</div>
+			<div class="col-6">
+				<section role="region" class="forecast conditionBox">
+					<div class="conditionHeader">
+						<img class="conditionIcon" src="./Assets/clouds.png" alt="clouds">
+						<h2>Forecast</h2>
+					</div>
+					<p>Evening Cloud Cover</p>
+					<ul class="cloudList">
+						<li class="cloudTime"><img class="icon cloudIcon7">7pm: <span class="js-clouds7">--</span> <span class="js-cloudCover7">--</span></li>
+						<li class="cloudTime"><img class="icon cloudIcon8"><span class="icon cloudIcon8"></span>8pm: <span class="js-clouds8">--</span> <span class="js-cloudCover8">--</span></li>
+						<li class="cloudTime"><img class="icon cloudIcon9"><span class="icon cloudIcon9"></span>9pm: <span class="js-clouds9">--</span> <span class="js-cloudCover9">--</span></li>
+						<li class="cloudTime"><img class="icon cloudIcon10"><span class="icon cloudIcon10"></span>10pm: <span class="js-clouds10">--</span> <span class="js-cloudCover10">--</span></li>
+						<li class="cloudTime"><img class="icon cloudIcon11"><span class="icon cloudIcon11"></span>11pm: <span class="js-clouds11">--</span> <span class="js-cloudCover11">--</span></li>
+					</ul>
+					<!-- <span class="js-cloudConditions"></span> <span class="js-cloudCover"></span></p> -->
+					<p>Temperature: <span class="js-temp">--</span></p>
+					<p>Humidity: <span class="js-humidity">--</span></p>
+					<p class="citation">Source: <a href="https://www.apixu.com/">APIXU</a></p>
+				</section>
 			</div>
+		</div>
 	</main>
 	
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhzMPUFxKG3VTooZrZ0ZKU_9zy3cCWJJE&libraries=places&callback=initMap" async defer></script>

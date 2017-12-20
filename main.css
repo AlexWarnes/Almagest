@@ -8,7 +8,11 @@ body {
 }
 
 h1 {
-	font-size: 3em;
+	font-size: 4em;
+	font-family: 'Cormorant Garamond', serif;
+	font-weight: 300;
+	margin-top: 7vh;
+	margin-bottom: 0;
 }
 
 h2 {
@@ -26,12 +30,13 @@ p {
 a {
 	text-decoration: none;
 	font-family: 'Montserrat', sans-serif;
+	font-weight: 200;
 	color: white;
 }
 
 a:hover {
 	text-decoration: underline;
-	color: #87f1f3;
+	color: #6fe9ff;
 }
 
 nav {
@@ -39,23 +44,51 @@ nav {
 	top: 0;
 	left: 0;
 	padding: 7px 0;
-	background-color: black;
+	background-color: #141B25;
 	color: white;
-	z-index: 1;
+	text-align: center;
 }
 
 header {
 	width: 100%;
+	height: 50vh;
 	margin: 0 auto 0 auto;
 	padding: 1px 0 20px 50px;
 	background-color: gray;
-	background-image: 
-		linear-gradient(
-	      rgba(0, 0, 0, 0.6),
-	      rgba(0, 0, 0, 0.1)),
+	background-image:
+		-webkit-linear-gradient(to right, rgba(27, 35, 51, 1), rgba(8, 43, 68, 0.4)),
+		url('./Assets/MW_Core2.jpg');
+	background-image:
+		-o-linear-gradient(to right, rgba(27, 35, 51, 1), rgba(8, 43, 68, 0.4)),
+		url('./Assets/MW_Core2.jpg');
+	background-image:
+		linear-gradient(to right, rgba(27, 35, 51, 1), rgba(8, 43, 68, 0.4)),
 		url('./Assets/MW_Core2.jpg');
 	background-position: center left;
 	color: white;
+}
+
+header p {
+	margin: 12px 0 0 0;
+	font-size: 20px;
+	font-weight: 200;
+}
+
+.mapSection p {
+	font-weight: 300;
+	margin-top: -10px;
+}
+
+.mapSection a {
+	color: #115e94;
+	font-weight: 400;
+	text-decoration: underline;
+}
+
+p.citation {
+	margin: 0;
+	font-size: 12px;
+	color: grey;
 }
 
 #map {
@@ -77,12 +110,13 @@ header {
 
 #datePicked {
 	width: 100%;
+	height: 30px;
 	border-radius: 5px;
 }
 
 .forecastWarning {
 	margin-top: 1px;
-	font-size: 12px;
+	font-size: 14px;
 	color: red;
 }
 
@@ -104,12 +138,20 @@ header {
 }
 
 .conditionBox {
-	margin: 5px;
+	margin: 5px 5px 25px 5px;
 	padding: 3px 3px 3px 10px;
 	color: white;
 	border-radius: 5px;
 	box-shadow: 1px 1px 5px #949496;
 	background-color: #37393A;
+}
+
+.conditionBox p {
+	font-weight: 400;
+}
+
+.conditionBox span {
+	font-weight: 200;
 }
 
 .conditionHeader {
@@ -143,4 +185,10 @@ header {
 	bottom: -5px;	
     left: -30px;
 	width: 30px;
+}
+
+@media only screen and (max-width: 640px) {
+	#mapSearch {
+		width: 100%;
+	}
 }

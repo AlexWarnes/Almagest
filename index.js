@@ -1,7 +1,7 @@
 'use strict';
 
-let userSpot = [];
-let marker = null;
+let USERSPOT = [];
+let MARKER = null;
 
 function initMap() {
 	var map = new google.maps.Map(document.getElementById('map'), {
@@ -81,10 +81,10 @@ function initMap() {
 	//Clicks anywhere on the map without an overlay
 	map.addListener('click', function(e) {
 		update_timeout = setTimeout(function(){
-			userSpot = [];
+			USERSPOT = [];
 			placeMarker(e.latLng, map);
 			console.log(e.latLng.lat() + ', ' + e.latLng.lng());
-			userSpot.push(e.latLng.lat(), e.latLng.lng())
+			USERSPOT.push(e.latLng.lat(), e.latLng.lng())
 		}, 300);
 	});
 
@@ -95,10 +95,10 @@ function initMap() {
 	//Clicks anywhere on the North America overlay
 	northAmericaOverlay.addListener('click', function(e) {
 		update_timeout = setTimeout(function(){
-			userSpot = [];
+			USERSPOT = [];
 			placeMarker(e.latLng, map);
 			console.log(e.latLng.lat() + ', ' + e.latLng.lng());
-			userSpot.push(e.latLng.lat(), e.latLng.lng())
+			USERSPOT.push(e.latLng.lat(), e.latLng.lng())
 		}, 300);
 	});
 
@@ -109,10 +109,10 @@ function initMap() {
 	//Clicks anywhere on the northern South America overlay
 	northernSAmericaOverlay.addListener('click', function(e) {
 		update_timeout = setTimeout(function(){
-			userSpot = [];
+			USERSPOT = [];
 			placeMarker(e.latLng, map);
 			console.log(e.latLng.lat() + ', ' + e.latLng.lng());
-			userSpot.push(e.latLng.lat(), e.latLng.lng())
+			USERSPOT.push(e.latLng.lat(), e.latLng.lng())
 		}, 300);
 	});
 
@@ -127,25 +127,25 @@ function initMap() {
 	//called (see click events above). Or else just set the position
 	//of marker that already exists to the new latLng of click.
 function placeMarker(latLng, map) {
-	if (!marker) {
-		marker = new google.maps.Marker({
+	if (!MARKER) {
+		MARKER = new google.maps.Marker({
 			position: latLng,
 			map: map,
 			draggable: true
 		});
 		console.log(latLng);
 	} else {
-		marker.setPosition(latLng);
+		MARKER.setPosition(latLng);
 		console.log(latLng);
 	}
-	//Add a listener to our new marker that changes the userSpot 
+	//Add a listener to our new marker that changes the USERSPOT 
 	//latLng if the marker is dragged. The page initializes without
 	//a marker, therefore we cannot add this listener until we
 	//create one, which is why it's inside this function
-	marker.addListener('dragend', function (e) { 
-		userSpot = [];
+	MARKER.addListener('dragend', function (e) { 
+		USERSPOT = [];
 		console.log(e.latLng.lat() + ', ' + e.latLng.lng());
-		userSpot.push(e.latLng.lat(), e.latLng.lng())
+		USERSPOT.push(e.latLng.lat(), e.latLng.lng())
 	});
 }
 
@@ -153,9 +153,9 @@ function checkConditions() {
 	$('.checkConditionsButton').on('click', function(event) {
 		event.preventDefault();
 		let userDate = $('#datePicked').val();
-		console.log('Checking conditions for ' + userSpot + ' on ' + userDate);
-		getSunData(userSpot, userDate, displaySunData);
-		getForecast(userSpot, userDate, displayForecast);
+		console.log('Checking conditions for ' + USERSPOT + ' on ' + userDate);
+		getSunData(USERSPOT, userDate, displaySunData);
+		getForecast(USERSPOT, userDate, displayForecast);
 	});
 }
 
@@ -163,8 +163,8 @@ function getSunData(location, userDate, callback) {
 	const settings = {
 		url: 'https://api.sunrise-sunset.org/json',
 		data: {
-			lat: userSpot[0],
-			lng: userSpot[1],
+			lat: USERSPOT[0],
+			lng: USERSPOT[1],
 			date: userDate,
 			formatted: 1
 		},
@@ -186,7 +186,7 @@ function getForecast(location, userDate, callback) {
 		url: 'https://api.apixu.com/v1/forecast.json',
 		data: {
 			key: '9e1547c7b1f049d9af1151052171812',
-			q: userSpot[0] + ', ' + userSpot[1],
+			q: USERSPOT[0] + ', ' + USERSPOT[1],
 			dt: userDate
 		},
 		dataType: 'JSON',
