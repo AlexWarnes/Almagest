@@ -18,7 +18,12 @@
 </head>
 <body>
 	<nav role="navigation">
-		<p>Navbar</p>
+		<div class="row">
+			<div class="col-3"><a href="#">Data Sources</a></div>
+			<div class="col-3"><a href="#">Light Pollution</a></div>
+			<div class="col-3"><a href="#">Stargazing &amp; Astrophotography</a></div>
+			<div class="col-3"><a href="https://github.com/AlexWarnes/Almagest" target="_blank">Sourcecode <i class="fab fa-github"></i></a></div>
+		</div>	
 	</nav>
 
 	<header role="banner">
@@ -31,42 +36,80 @@
 	</header>
 
 	<main>
+		<!-- MAP -->
 		<div class="row">
-			<div class="col-6">
-				<!-- MAP -->
-				<h3>1. Click on the map to select a stargazing location</h3>
-				<input id="mapSearch" class="controls" type="text" placeholder="Search for a place">
+			<div class="col-12">
+				<h3>1. Click to drop a marker on your stargazing location</h3>
+				<input id="mapSearch" class="controls" type="text" placeholder="Search to jump to an area">
 				<div id="map"></div>
 			</div>
+		</div>
+
+		<!-- DATE SELECT -->
+		<div class="row">
 			<div class="col-6">
-				<!-- DATE SELECT -->
-				<h3>2. Select a date</h3>
-				<input type="DATE" id="datePicked">
-				<h3>3. And check conditions!</h3>
-				<button role="button" class="checkConditionsButton">Check Conditions</button>
-
-				<!-- SUN & MOON -->
-				<section class="sunInfo">
-					<p>Sunrise: <span class="js-sunrise"></span></p>
-					<p>Sunset: <span class="js-sunset"></span></p>
-				</section>
-				<section class="moonInfo">
-					<p>Moonrise: <span class="js-moonRise"></span></p>
-					<p>Moonset: <span class="js-moonSet"></span></p>
-					<p>Moon Phase: <span class="js-moonPhase">:(</span></p>
-					<p>Illumination: <span class="js-illumination">:(</span></p>
-				</section>
-
-				<!-- FORECAST -->
-				<section class="forecast">
-					<!-- consider doing hourly clouds 7pm-11pm -->
-					<p>Evening Clouds: <span class="js-cloudConditions"></span> <span class="js-cloudCover"></span></p>
-					<p>Temperature: <span class="js-temp"></span></p>
-					<p>Humidity: <span class="js-humidity"></span></p>
+				<section role="region" class="dateSection">
+					<h3>2. Select a date</h3>
+					<input type="DATE" id="datePicked">
+					<p class="forecastWarning">*Forecast data limited to next 10 days</p>
+					<h3>3. Check conditions</h3>
+					<button role="button" class="checkConditionsButton">Check Conditions</button>
 				</section>
 			</div>
 		</div>
 
+		<div class="row">
+
+			<!-- SUN DATA -->
+			<div class="col-4">
+				<section class="sunInfo conditionBox">
+					<div class="conditionHeader">
+						<img class="conditionIcon" src="./Assets/sun.png" alt="sun">
+						<h2>Sun Info</h2>
+					</div>
+					<p>Sunrise: <span class="js-sunrise">--</span></p>
+					<p>Sunset: <span class="js-sunset">--</span></p>
+				</section>
+			</div>
+
+			<!-- MOON DATA -->
+			<div class="col-4">
+				<section class="moonInfo conditionBox">
+					<div class="conditionHeader">
+						<img class="conditionIcon" src="./Assets/moon.png" alt="moon">
+						<h2>Moon Info</h2>
+					</div>
+					<p>Moonrise: <span class="js-moonRise">--</span></p>
+					<p>Moonset: <span class="js-moonSet">--</span></p>
+					<!-- <p>Moon Phase: <span class="js-moonPhase">:(</span></p>
+					<p>Illumination: <span class="js-illumination">:(</span></p> -->
+				</section>
+			</div>
+			
+		</div>
+			<!-- FORECAST -->
+			<div class="row">
+				<div class="col-6">
+					<section class="forecast conditionBox">
+						<!-- consider doing hourly clouds 7pm-11pm -->
+						<div class="conditionHeader">
+							<img class="conditionIcon" src="./Assets/clouds.png" alt="clouds">
+							<h2>Forecast</h2>
+						</div>
+						<p>Evening Cloud Cover</p>
+						<ul class="cloudList">
+							<li class="cloudTime"><img class="icon cloudIcon7">7pm: <span class="js-clouds7">--</span> <span class="js-cloudCover7">--</span></li>
+							<li class="cloudTime"><img class="icon cloudIcon8"><span class="icon cloudIcon8"></span>8pm: <span class="js-clouds8">--</span> <span class="js-cloudCover8">--</span></li>
+							<li class="cloudTime"><img class="icon cloudIcon9"><span class="icon cloudIcon9"></span>9pm: <span class="js-clouds9">--</span> <span class="js-cloudCover9">--</span></li>
+							<li class="cloudTime"><img class="icon cloudIcon10"><span class="icon cloudIcon10"></span>10pm: <span class="js-clouds10">--</span> <span class="js-cloudCover10">--</span></li>
+							<li class="cloudTime"><img class="icon cloudIcon11"><span class="icon cloudIcon11"></span>11pm: <span class="js-clouds11">--</span> <span class="js-cloudCover11">--</span></li>
+						</ul>
+						<!-- <span class="js-cloudConditions"></span> <span class="js-cloudCover"></span></p> -->
+						<p>Temperature: <span class="js-temp">--</span></p>
+						<p>Humidity: <span class="js-humidity">--</span></p>
+					</section>
+				</div>
+			</div>
 	</main>
 	
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhzMPUFxKG3VTooZrZ0ZKU_9zy3cCWJJE&libraries=places&callback=initMap" async defer></script>

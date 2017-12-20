@@ -198,78 +198,35 @@ function getForecast(location, userDate, callback) {
 
 function displayForecast(data) {
 	console.log(data);
-	$('.js-sunrise').text(`${data.forecast.forecastday["0"].astro.sunrise} local`); 
-	$('.js-sunset').text(`${data.forecast.forecastday["0"].astro.sunset} local`);
-	$('.js-moonRise').text(`${data.forecast.forecastday["0"].astro.moonrise} local`);
-	$('.js-moonSet').text(`${data.forecast.forecastday["0"].astro.moonset} local`);
-	$('.js-cloudConditions').text(`${data.forecast.forecastday["0"].hour["20"].condition.text}`);
-	$('.js-cloudCover').text(`(${data.forecast.forecastday["0"].hour["20"].cloud}%)`);
+	$('.js-sunrise').text(`${data.forecast.forecastday["0"].astro.sunrise}`); 
+	$('.js-sunset').text(`${data.forecast.forecastday["0"].astro.sunset}`);
+	$('.js-moonRise').text(`${data.forecast.forecastday["0"].astro.moonrise}`);
+	$('.js-moonSet').text(`${data.forecast.forecastday["0"].astro.moonset}`);
+
+	$('.cloudIcon7').attr('src', `https:${data.forecast.forecastday["0"].hour["19"].condition.icon}`);
+	$('.js-clouds7').text(`${data.forecast.forecastday["0"].hour["19"].condition.text}`);
+	$('.js-cloudCover7').text(`(${data.forecast.forecastday["0"].hour["19"].cloud}%)`);
+
+	$('.cloudIcon8').attr('src', `https:${data.forecast.forecastday["0"].hour["20"].condition.icon}`);
+	$('.js-clouds8').text(`${data.forecast.forecastday["0"].hour["20"].condition.text}`);
+	$('.js-cloudCover8').text(`(${data.forecast.forecastday["0"].hour["20"].cloud}%)`);
+
+	$('.cloudIcon9').attr('src', `https:${data.forecast.forecastday["0"].hour["21"].condition.icon}`);
+	$('.js-clouds9').text(`${data.forecast.forecastday["0"].hour["21"].condition.text}`);
+	$('.js-cloudCover9').text(`(${data.forecast.forecastday["0"].hour["21"].cloud}%)`);
+
+	$('.cloudIcon10').attr('src', `https:${data.forecast.forecastday["0"].hour["22"].condition.icon}`);
+	$('.js-clouds10').text(`${data.forecast.forecastday["0"].hour["22"].condition.text}`);
+	$('.js-cloudCover10').text(`(${data.forecast.forecastday["0"].hour["22"].cloud}%)`);
+
+	$('.cloudIcon11').attr('src', `https:${data.forecast.forecastday["0"].hour["23"].condition.icon}`);
+	$('.js-clouds11').text(`${data.forecast.forecastday["0"].hour["23"].condition.text}`);
+	$('.js-cloudCover11').text(`(${data.forecast.forecastday["0"].hour["23"].cloud}%)`);
+
+
 	$('.js-temp').text(`${data.forecast.forecastday["0"].day.maxtemp_f}/${data.forecast.forecastday["0"].day.mintemp_f} F`);
 	$('.js-humidity').text(`${data.forecast.forecastday["0"].day.avghumidity}`);
 }
 
 $(checkConditions);
 
-
-
-// function getUserSpotInfo(latLng) {
-// 	let userSpotPicked = latLng.lat() + ', ' + latLng.lng();
-// 	console.log(userSpotPicked);
-// };
-
-//var marker; 
-//function placeMarker(location) {
-// 	if (marker) {
-// 		marker.setPosition(location);
-// 	} else {
-// 		const marker = new google.maps.Marker({
-// 		position: location,
-// 		map: map,
-// 		draggable: true
-// 		});
-// 	}
-// 	map.panTo(location);
-// }
-
-
-// function startUp() {
-// 	initMap();
-// 	placeMarkerAndPanTo();
-// }
-
-// $(startUp);
-
-
-
-//GET USER CURRENT LOCATION (sample code runs inside initMap)
-
-  //   infoWindow = new google.maps.InfoWindow;
-
-  //   // Try HTML5 geolocation.
-  //   if (navigator.geolocation) {
-  //     navigator.geolocation.getCurrentPosition(function(position) {
-  //       var pos = {
-  //         lat: position.coords.latitude,
-  //         lng: position.coords.longitude
-  //       };
-
-  //       infoWindow.setPosition(pos);
-  //       infoWindow.setContent('Location found.');
-  //       infoWindow.open(map);
-  //       map.setCenter(pos);
-  //     }, function() {
-  //       handleLocationError(true, infoWindow, map.getCenter());
-  //     });
-  //   } else {
-  //     // Browser doesn't support Geolocation
-  //     handleLocationError(false, infoWindow, map.getCenter());
-  //   }
-  // }
-
-  // function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-  //   infoWindow.setPosition(pos);
-  //   infoWindow.setContent(browserHasGeolocation ?
-  //                         'Error: The Geolocation service failed.' :
-  //                         'Error: Your browser doesn\'t support geolocation.');
-  //   infoWindow.open(map);
-  // }
