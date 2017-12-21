@@ -43,6 +43,11 @@
 				<section role="region" class="mapSection">
 					<h3>1. Click to drop a marker on your stargazing location</h3>
 					<p>Use the light pollution overlay to find a place near you with dark skies. Coverage here is limited to parts of North, Central, and South America. For worldwide coverage, see <a href="https://www.lightpollutionmap.info/#zoom=4&lat=5759860&lon=1619364&layers=B0FFFTFFFF" target="_blank">this site</a>.</p>
+					<div class="legend">
+						<p class="legendTitle">LIGHT POLLUTION SPECTRUM</p>
+						<div class="legendSpectrum"></div>
+						<p class="legendText"><span class="legendLow">low</span><span class="legendSevere">severe</span></p>
+					</div>
 					<input id="mapSearch" class="controls" type="text" placeholder="Search to jump to an area">
 					<div id="map"></div>
 					<p class="citation">Source: <a href="http://advances.sciencemag.org/content/2/6/e1600377" target="_blank">The New World Atlas of Artificial Night Sky Brightness</a></p>
@@ -52,13 +57,21 @@
 
 		<!-- DATE SELECT -->
 		<div class="row">
-			<div class="col-6">
+			<div class="col-12">
 				<section role="region" class="dateSection">
 					<h3>2. Select a date</h3>
 					<input type="DATE" id="datePicked" placeholder="yyyy-mm-dd" required>
 					<p class="forecastWarning">*Forecast and data limited to next 10 days</p>
 					<h3>3. Check conditions</h3>
 					<button role="button" class="checkConditionsButton">Check Conditions</button>
+					<div class="idealConditions">
+						<p>Use this data to plan when your location will have ideal stargazing conditions:</p>
+						<ul>
+							<li>Begin your stargazing at least an hour after sunset</li>
+							<li>Find a time when the moon is down (after moonset or before moonrise)</li>
+							<li>Make sure the skies are mostly clear of clouds</li>
+						</ul>
+					</div>
 				</section>
 			</div>
 		</div>
