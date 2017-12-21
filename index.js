@@ -153,7 +153,7 @@ function checkConditions() {
 		let userDate = $('#datePicked').val();
 		if (userDate) {
 			console.log('Checking conditions for ' + USERSPOT + ' on ' + userDate);
-			getSunData(USERSPOT, userDate, displaySunData);
+			// getSunData(USERSPOT, userDate, displaySunData);
 			getForecast(USERSPOT, userDate, displayForecast);
 		} else {
 			$('#datePicked').css('border', '2px solid red');
@@ -161,27 +161,27 @@ function checkConditions() {
 	});
 }
 
-function getSunData(location, userDate, callback) {
-	const settings = {
-		url: 'https://api.sunrise-sunset.org/json',
-		data: {
-			lat: USERSPOT[0],
-			lng: USERSPOT[1],
-			date: userDate,
-			formatted: 1
-		},
-		dataType: 'JSON',
-		type: 'GET',
-		success: callback
-	}
-	$.ajax(settings);
-}
+// function getSunData(location, userDate, callback) {
+// 	const settings = {
+// 		url: 'https://api.sunrise-sunset.org/json',
+// 		data: {
+// 			lat: USERSPOT[0],
+// 			lng: USERSPOT[1],
+// 			date: userDate,
+// 			formatted: 1
+// 		},
+// 		dataType: 'JSON',
+// 		type: 'GET',
+// 		success: callback
+// 	}
+// 	$.ajax(settings);
+// }
 
-function displaySunData(data) {
-	console.log(data);
-	$('.js-sunrise').text(`${data.results.sunrise} UTC`); 
-	$('.js-sunset').text(`${data.results.sunset} UTC`);
-}
+// function displaySunData(data) {
+// 	console.log(data);
+// 	$('.js-sunrise').text(`${data.results.sunrise} UTC`); 
+// 	$('.js-sunset').text(`${data.results.sunset} UTC`);
+// }
 
 function getForecast(location, userDate, callback) {
 	const settings = {
@@ -202,6 +202,7 @@ function displayForecast(data) {
 	console.log(data);
 	$('.js-sunrise').text(`${data.forecast.forecastday["0"].astro.sunrise}`); 
 	$('.js-sunset').text(`${data.forecast.forecastday["0"].astro.sunset}`);
+	
 	$('.js-moonRise').text(`${data.forecast.forecastday["0"].astro.moonrise}`);
 	$('.js-moonSet').text(`${data.forecast.forecastday["0"].astro.moonset}`);
 
