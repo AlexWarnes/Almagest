@@ -50,6 +50,7 @@ function initMap() {
 			}
 		});
 		map.fitBounds(bounds);
+		placeMarker(map.getCenter(bounds), map);
 	});
 
 	const northAmericaBounds = {
@@ -84,7 +85,6 @@ function initMap() {
 			USERSPOT = [];
 			placeMarker(e.latLng, map);
 			console.log(e.latLng.lat() + ', ' + e.latLng.lng());
-			USERSPOT.push(e.latLng.lat(), e.latLng.lng())
 		}, 300);
 	});
 
@@ -98,7 +98,6 @@ function initMap() {
 			USERSPOT = [];
 			placeMarker(e.latLng, map);
 			console.log(e.latLng.lat() + ', ' + e.latLng.lng());
-			USERSPOT.push(e.latLng.lat(), e.latLng.lng())
 		}, 300);
 	});
 
@@ -112,7 +111,6 @@ function initMap() {
 			USERSPOT = [];
 			placeMarker(e.latLng, map);
 			console.log(e.latLng.lat() + ', ' + e.latLng.lng());
-			USERSPOT.push(e.latLng.lat(), e.latLng.lng())
 		}, 300);
 	});
 
@@ -133,10 +131,10 @@ function placeMarker(latLng, map) {
 			map: map,
 			draggable: true
 		});
-		console.log(latLng);
+		USERSPOT.push(latLng.lat(), latLng.lng());
 	} else {
 		MARKER.setPosition(latLng);
-		console.log(latLng);
+		USERSPOT.push(latLng.lat(), latLng.lng());
 	}
 	//Add a listener to our new marker that changes the USERSPOT 
 	//latLng if the marker is dragged. The page initializes without
@@ -153,9 +151,13 @@ function checkConditions() {
 	$('.checkConditionsButton').on('click', function(event) {
 		event.preventDefault();
 		let userDate = $('#datePicked').val();
-		console.log('Checking conditions for ' + USERSPOT + ' on ' + userDate);
-		getSunData(USERSPOT, userDate, displaySunData);
-		getForecast(USERSPOT, userDate, displayForecast);
+		if (userDate) {
+			console.log('Checking conditions for ' + USERSPOT + ' on ' + userDate);
+			getSunData(USERSPOT, userDate, displaySunData);
+			getForecast(USERSPOT, userDate, displayForecast);
+		} else {
+			$('#datePicked').css('border', '2px solid red');
+		};
 	});
 }
 
