@@ -28,12 +28,12 @@
 
 	<header role="banner">
 		<h1>Almagest</h1>
-		<p>Plan your stargazing in three easy steps.</p>
-		<ol>
-			<li>Find a spot</li>
-			<li>Pick a date</li>
-			<li>Check conditions</li>
-		</ol>
+		<p>Plan your stargazing.</p>
+		<ul class="fa-ul">
+			<li><span class="fa-li"><i class="far fa-map"></i></span>Find a spot</li>
+			<li><span class="fa-li"><i class="far fa-calendar-alt"></i></span>Pick a date</li>
+			<li><span class="fa-li"><i class="fas fa-cloud"></i></span>Check conditions</li>
+		</ul class="fa-ul">
 	</header>
 
 	<main role="main">
@@ -41,8 +41,11 @@
 		<div class="row">
 			<div class="col-12">
 				<section role="region" class="mapSection">
-					<h3>1. Click to drop a marker on your stargazing location</h3>
-					<p>Use the light pollution overlay to find a place near you with dark skies. Coverage here is limited to parts of North, Central, and South America. For worldwide coverage, see <a href="https://www.lightpollutionmap.info/#zoom=4&lat=5759860&lon=1619364&layers=B0FFFTFFFF" target="_blank">this site</a>.</p>
+					<h2>1. Click to drop a marker on your stargazing location</h2>
+					<div class="explanationBox">
+						<h3>How to use this map</h3>
+						<p>Reference the light pollution overlay to find a place near you with dark skies. Coverage here is limited to parts of North, Central, and South America. For worldwide coverage, see <a href="https://www.lightpollutionmap.info/#zoom=4&lat=5759860&lon=1619364&layers=B0FFFTFFFF" target="_blank">this site</a>.</p>
+					</div>
 					<div class="legend">
 						<p class="legendTitle">LIGHT POLLUTION SPECTRUM</p>
 						<div class="legendSpectrum"></div>
@@ -57,26 +60,36 @@
 
 		<!-- DATE SELECT -->
 		<div class="row">
-			<div class="col-12">
+			<div class="col-4">
 				<section role="region" class="dateSection">
-					<h3>2. Select a date</h3>
+					<h2>2. Select a date</h2>
 					<input type="DATE" id="datePicked" placeholder="yyyy-mm-dd" required>
 					<p class="forecastWarning">*Forecast and data limited to next 10 days</p>
-					<h3>3. Check conditions</h3>
-					<button role="button" class="checkConditionsButton">Check Conditions</button>
-					<div class="idealConditions">
-						<p>Use this data to plan when your location will have ideal stargazing conditions:</p>
-						<ul>
-							<li>Begin your stargazing at least an hour after sunset</li>
-							<li>Find a time when the moon is down (after moonset or before moonrise)</li>
-							<li>Make sure the skies are mostly clear of clouds</li>
-						</ul>
-					</div>
 				</section>
 			</div>
 		</div>
 
+		<!-- CHECK CONDITIONS BUTTON & EXPLANATION -->
 		<div class="row">
+			<div class="col-4">
+				<h2>3. Check conditions</h2>
+				<button role="button" class="checkConditionsButton">Check Conditions</button>
+			</div>
+			<div class="col-6">
+				<div class="idealConditions explanationBox">
+					<h3>How to use this data</h3>
+					<ul>
+						<li>Begin your stargazing at least an hour after sunset</li>
+						<li>Choose a time after moonset and before moonrise</li>
+						<li>Make sure the sky is mostly clear of clouds</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<!-- CONDITION BOXES -->
+		<div class="row">
+
 			<!-- SUN DATA -->
 			<div class="col-4">
 				<section role="region" class="sunInfo conditionBox">
@@ -125,6 +138,10 @@
 			</div>
 		</div>
 	</main>
+	<footer role="contentinfo">
+		<h3>What does "Almagest" mean?</h3>
+		<p>The Almagest is a 2nd-century mathematical and astronomical treatise on the apparent motions of the stars and planetary paths, and one of the most influential scientific texts of all time. Find out <a href="https://en.wikipedia.org/wiki/Almagest" target="_blank">more.</a></p>
+	</footer>
 	
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhzMPUFxKG3VTooZrZ0ZKU_9zy3cCWJJE&libraries=places&callback=initMap" async defer></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

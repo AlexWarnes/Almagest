@@ -3,28 +3,24 @@ body * {
 	font-family: 'Montserrat', sans-serif;
 }
 
-body {
-	margin-bottom: 100px;
-}
-
 h1 {
 	font-size: 4em;
 	font-family: 'Cormorant Garamond', serif;
 	font-weight: 300;
-	margin-top: 7vh;
+	margin-top: 4vh;
 	margin-bottom: 0;
 }
 
 h2 {
-	margin: 0;
-}
-
-h3 {
 	margin-top: 50px;
 }
 
+h3 {
+	margin: 10px 0 0 0;
+}
+
 p {
-	font-weight: 200;
+	font-weight: 300;
 }
 
 a {
@@ -36,7 +32,7 @@ a {
 
 a:hover {
 	text-decoration: underline;
-	color: #6fe9ff;
+	color: #68bfab;
 }
 
 nav {
@@ -76,9 +72,17 @@ header p {
 	font-weight: 200;
 }
 
-.mapSection p {
-	font-weight: 300;
-	margin-top: -10px;
+header ul {
+	font-size: 20px;
+    font-weight: 200;
+    line-height: 35px;
+    list-style: none;
+    margin-top: 12px;
+}
+
+header span.fa-li {
+	font-size: 18px;
+	color: #68bfab;
 }
 
 .mapSection a {
@@ -145,7 +149,7 @@ p.citation {
 	width: 325px;
 	font-family: 'Helvetica', sans-serif;
 	font-size: 20px;
-	padding: 5px;
+	padding: 6px;
 	border: 1px solid silver;
 	border-radius: 5px;
 }
@@ -190,17 +194,40 @@ p.citation {
 	cursor: pointer;
 }
 
-div.idealConditions p, div.idealConditions ul {
-	font-weight: 300;
+
+div.explanationBox {
+	width: 100%;
+    margin-bottom: 20px;
+	border: thin solid #32907A;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-left: 5px solid #32907A;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px #949496;
+    font-weight: 300;
+}
+
+div.idealConditions {
+	margin-top: 45px;
+}
+
+div.idealConditions ul {
+	margin: 10px 0;
+	padding-left: 20px;
+	line-height: 30px;
 }
 
 .conditionBox {
 	margin: 5px 5px 25px 5px;
-	padding: 3px 3px 3px 10px;
+	padding: 10px 3px 3px 10px;
 	color: white;
 	border-radius: 5px;
 	box-shadow: 1px 1px 5px #949496;
 	background-color: #37393A;
+}
+
+.conditionBox h2 {
+	margin: 0;
 }
 
 .conditionBox p {
@@ -226,6 +253,7 @@ div.idealConditions p, div.idealConditions ul {
 }
 
 .forecast {
+	min-height: 400px;
 }
 
 .cloudList {
@@ -242,6 +270,35 @@ div.idealConditions p, div.idealConditions ul {
 	bottom: -5px;	
     left: -30px;
 	width: 30px;
+}
+
+footer {
+	width: 100%;
+	margin: 50px 0 0 0;
+	padding: 40px;
+	color: white;
+		background-color: gray;
+	background-image:
+		-webkit-linear-gradient(to right, rgba(27, 35, 51, 1), rgba(8, 43, 68, 0.4)),
+		url('./Assets/MW_Clouds.jpg');
+	background-image:
+		-o-linear-gradient(to right, rgba(27, 35, 51, 1), rgba(8, 43, 68, 0.4)),
+		url('./Assets/MW_Clouds.jpg');
+	background-image:
+		linear-gradient(to right, rgba(27, 35, 51, 1), rgba(8, 43, 68, 0.4)),
+		url('./Assets/MW_Clouds.jpg');
+	background-size: cover;
+	background-position: center right;
+	background-repeat: no-repeat;
+}
+
+footer p {
+	max-width: 500px;
+}
+
+footer a {
+	text-decoration: underline;
+	font-weight: 400;
 }
 
 @media only screen and (max-width: 640px) {
