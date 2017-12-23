@@ -16,13 +16,14 @@
 			<link rel="stylesheet" href="main.css">
 			<link rel="stylesheet" href="gridrules.css">
 </head>
-<body>
+<body id="top">
 	<nav role="navigation">
 		<div class="row">
 			<!-- <div class="col-3"><a href="#">Data Sources</a></div> -->
 			<!-- <div class="col-3"><a href="#">Light Pollution</a></div> -->
 			<!-- <div class="col-3"><a href="#">Stargazing &amp; Astrophotography</a></div> -->
-			<div class="col-12"><a href="https://github.com/AlexWarnes/Almagest" target="_blank">Sourcecode <i class="fab fa-github"></i></a></div>
+			<div class="col-6"><a href="#education">Learn More</a></div>
+			<div class="col-6"><a href="https://github.com/AlexWarnes/Almagest" target="_blank">Sourcecode <i class="fab fa-github"></i></a></div>
 		</div>	
 	</nav>
 
@@ -44,7 +45,7 @@
 					<h2>1. Click to drop a marker on your stargazing location</h2>
 					<div class="explanationBox">
 						<h3>How to use this map</h3>
-						<p>Reference the light pollution overlay to find a place near you with dark skies. Coverage here is limited to parts of North, Central, and South America. For worldwide coverage, see <a href="https://www.lightpollutionmap.info/#zoom=4&lat=5759860&lon=1619364&layers=B0FFFTFFFF" target="_blank">this site</a>.</p>
+						<p>Reference the light pollution overlay to find a place near you with dark skies. Coverage here is limited to parts of North, Central, and South America. For worldwide coverage, see <a href="https://www.lightpollutionmap.info" target="_blank">this site</a>.</p>
 					</div>
 					<div class="legend">
 						<p class="legendTitle">LIGHT POLLUTION SPECTRUM</p>
@@ -60,7 +61,7 @@
 
 		<!-- DATE SELECT -->
 		<div class="row">
-			<div class="col-4">
+			<div class="col-6">
 				<section role="region" class="dateSection">
 					<h2>2. Select a date</h2>
 					<input type="DATE" id="datePicked" placeholder="yyyy-mm-dd" required>
@@ -71,19 +72,9 @@
 
 		<!-- CHECK CONDITIONS BUTTON & EXPLANATION -->
 		<div class="row">
-			<div class="col-4">
-				<h2>3. Check conditions</h2>
-				<button role="button" class="checkConditionsButton">Check Conditions</button>
-			</div>
 			<div class="col-6">
-				<div class="idealConditions explanationBox">
-					<h3>How to use this data</h3>
-					<ul>
-						<li>Begin your stargazing at least an hour after sunset</li>
-						<li>Choose a time after moonset and before moonrise</li>
-						<li>Make sure the sky is mostly clear of clouds</li>
-					</ul>
-				</div>
+				<h2>3. Get data</h2>
+				<button role="button" class="checkConditionsButton">Check Conditions  <i class="fas fa-list"></i></button>
 			</div>
 		</div>
 
@@ -137,13 +128,108 @@
 				</section>
 			</div>
 		</div>
+		<div class="row">
+			<div class="col-8">
+				<div class="explanationBox modal">
+					<h3>How to use this data <i class="fab fa-wpexplorer modalIcon"></i></h3>
+					<ul>
+						<li>Begin your stargazing at least an hour after sunset</li>
+						<li>Choose a time after moonset and before moonrise</li>
+						<li>Make sure the sky is mostly clear of clouds</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<div class="toTop">
+			<a href="#top">Back to Top <i class="fas fa-chevron-circle-up"></i></a>
+		</div>
+	<!-- EDUCATIONAL SECTION -->
+
+		<section role="region" class="educationBanner" id="education">
+			<div class="row">
+				<div class="col-6">
+					<h2>Get more out of your sky.</h2>
+					<ul class="fa-ul">
+						<li><span class="fa-li"><i class="fas fa-moon"></i></span>Stargazing Tips</li>
+						<li><span class="fa-li"><i class="fas fa-images"></i></span>Astrophotography</li>
+						<li><span class="fa-li"><i class="fas fa-book"></i></span>Additional Resources</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+		<section role="region" class="stargazingTips">
+			<div class="row">
+				<div class="col-10">
+					<div class="explanationBox modal">
+						<h3>New Stargazers<i class="fab fa-grav modalIcon"></i></h3>
+						<ul>
+							<li>Parks make great stargazing locations, but some parks close after dark so call ahead.</li>
+							<li>Use a program like <a href="http://stellarium.org/">Stellarium</a> to see what's in the sky and where to look.</li>
+							<li>Your eyes will take 20-30 minutes to adjust. Avoid looking at any sources of light: cell phones, headlights, flashlights, etc.</li>
+							<li>Use a red LED flashlight. Red light does not affect your dark-adjusted vision.</li>
+							<li>While en-route, be sure to dim your dash-lights (usually a small knob left of your steering wheel). A good move anytime it's dark, but moreso when you're away from city lights.</li>
+							<li>Bring extra layers. It's often colder than expected since you're not moving very much.</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-10">
+					<div class="explanationBox modal">
+						<h3>Astrophotography<i class="fas fa-camera modalIcon"></i></h3>
+						<p>If you have a DSLR, you can definitely take astrophotos! To give it a try, I've put together <a href="http://www.alexwarnes.com/resources.html" target="_blank">a page full of resources</a> that helped me get started.</p>
+						<p class="listHead">Quick DSLR Settings Reference:</p>
+						<ul>
+							<li>Mode: Manual</li>
+							<li>Image Type: RAW</li>
+							<li>Focus: Manual</li>
+							<li>Shutter: 500/focal-length in seconds</li>
+							<li>Aperture: Wide (lowest f-stop)</li>
+							<li>ISO: 800+ depending on conditions</li>
+							<li>Use the 2-second delay or a remote to avoid camera shake</li>
+							<li>Use a tripod</li>
+							<li>Use an <a href="https://www.lonelyspeck.com/milky-way-exposure-calculator/" target="_blank">exposure calculator</a> for best results</li>
+						</ul>
+						<p class="listHead">Don't forget:</p>
+						<ul>
+							<li>Lens(es)</li>
+							<li>Batteries</li>
+							<li>Memory</li>
+							<li>Tripod</li>
+						</ul>
+						<p>Try different settings for your setup, and enjoy the stars!</p>
+					</div>				
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-10">
+					<div class="explanationBox modal">
+						<h3>Resources<i class="fas fa-space-shuttle modalIcon"></i></h3>
+						<ul>
+							<li><a href="https://www.youtube.com/playlist?list=PLTiv_XWHnOZrT_ppDGiT__fI3yjD4t7dI" target="_blank">What's Up?</a> - A monthly video from NASA Jet Propulsion Laboratory about what will be in the night sky this month.</li>
+							<li><a href="https://www.lonelyspeck.com" target="_blank">Lonely Speck</a> - Astrophotography tutorials, tools, gear + inspiration</li>
+							<li><a href="http://www.cleardarksky.com/csk/" target="_blank">ClearDarkSky Charts</a> - 48hr outlook of the astronomer's forecast: clouds, transparency, seeing</li>
+							<li><a href="http://stellarium.org" target="_blank">Stellarium</a> - Free, open-source planetarium for your computer (64-bit version works with Windows 10)</li>
+							<li><a href="http://www.darksky.org/" target="_blank">International Dark Sky Association</a> - Understand the harmful affects of light pollution on people, animals, and ecosystems, and what you can do about it.</li>
+							<li><a href="https://www.lightpollutionmap.info" target="_blank">Worldwide Light Pollution Map</a> - Reference multiple sources of light pollution data, worldwide.</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
 	</main>
+
+	<div class="toTop">
+			<a href="#top">Back to Top <i class="fas fa-chevron-circle-up"></i></a>
+	</div>
+
 	<footer role="contentinfo">
 		<h3>What does "Almagest" mean?</h3>
 		<p>The Almagest is a 2nd-century mathematical and astronomical treatise on the apparent motions of the stars and planetary paths, and one of the most influential scientific texts of all time. Find out <a href="https://en.wikipedia.org/wiki/Almagest" target="_blank">more.</a></p>
 	</footer>
 	
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhzMPUFxKG3VTooZrZ0ZKU_9zy3cCWJJE&libraries=places&callback=initMap" async defer></script>
+	<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhzMPUFxKG3VTooZrZ0ZKU_9zy3cCWJJE&libraries=places&callback=initMap" async defer></script> -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script type="text/javascript" src="index.js"></script>
 </body>
