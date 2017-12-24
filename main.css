@@ -366,6 +366,7 @@ footer p {
 
 footer a {
 	text-decoration: underline;
+	color: white;
 	font-weight: 400;
 }
 
