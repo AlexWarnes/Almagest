@@ -1,7 +1,12 @@
 'use strict';
 
-let USERSPOT = [];
-let MARKER = null;
+const STORE = {
+	userSpot: [],
+	marker: null
+};
+
+// let USERSPOT = [];
+// let MARKER = null;
 
 function initMap() {
 	var map = new google.maps.Map(document.getElementById('map'), {
@@ -82,39 +87,39 @@ function initMap() {
 	//Clicks anywhere on the map without an overlay
 	map.addListener('click', function(e) {
 		update_timeout = setTimeout(function(){
-			USERSPOT = [];
+			STORE.userSpot = [];
 			placeMarker(e.latLng, map);
 			console.log(e.latLng.lat() + ', ' + e.latLng.lng());
 		}, 300);
 	});
 
-	map.addListener('dblclick', function(event) {
+	map.addListener('dblclick', function(e) {
 		clearTimeout(update_timeout);
 	});
 
 	//Clicks anywhere on the North America overlay
 	northAmericaOverlay.addListener('click', function(e) {
 		update_timeout = setTimeout(function(){
-			USERSPOT = [];
+			STORE.userSpot = [];
 			placeMarker(e.latLng, map);
 			console.log(e.latLng.lat() + ', ' + e.latLng.lng());
 		}, 300);
 	});
 
-	northAmericaOverlay.addListener('dblclick', function(event) {
+	northAmericaOverlay.addListener('dblclick', function(e) {
 		clearTimeout(update_timeout);
 	});
 
 	//Clicks anywhere on the northern South America overlay
 	northernSAmericaOverlay.addListener('click', function(e) {
 		update_timeout = setTimeout(function(){
-			USERSPOT = [];
+			STORE.userSpot = [];
 			placeMarker(e.latLng, map);
 			console.log(e.latLng.lat() + ', ' + e.latLng.lng());
 		}, 300);
 	});
 
-	northernSAmericaOverlay.addListener('dblclick', function(event) {
+	northernSAmericaOverlay.addListener('dblclick', function(e) {
 		clearTimeout(update_timeout);
 	});	
 }
@@ -125,36 +130,37 @@ function initMap() {
 	//called (see click events above). Or else just set the position
 	//of marker that already exists to the new latLng of click.
 function placeMarker(latLng, map) {
-	if (!MARKER) {
-		MARKER = new google.maps.Marker({
+	if (!STORE.marker) {
+		STORE.marker = new google.maps.Marker({
 			position: latLng,
 			map: map,
 			draggable: true
 		});
-		USERSPOT.push(latLng.lat(), latLng.lng());
+		STORE.userSpot.push(latLng.lat(), latLng.lng());
+		console.log(STORE.userSpot);
 	} else {
-		MARKER.setPosition(latLng);
-		USERSPOT.push(latLng.lat(), latLng.lng());
+		STORE.marker.setPosition(latLng);
+		STORE.userSpot.push(latLng.lat(), latLng.lng());
+		console.log(STORE.userSpot);
 	}
 	//Add a listener to our new marker that changes the USERSPOT 
 	//latLng if the marker is dragged. The page initializes without
 	//a marker, therefore we cannot add this listener until we
 	//create one, which is why it's inside this function
-	MARKER.addListener('dragend', function (e) { 
-		USERSPOT = [];
-		console.log(e.latLng.lat() + ', ' + e.latLng.lng());
-		USERSPOT.push(e.latLng.lat(), e.latLng.lng())
+	STORE.marker.addListener('dragend', function (e) { 
+		STORE.userSpot = [];
+		STORE.userSpot.push(e.latLng.lat(), e.latLng.lng());
+		console.log(STORE.userSpot);
 	});
 }
 
 function checkConditions() {
-	$('.checkConditionsButton').on('click', function(event) {
-		event.preventDefault();
+	$('.checkConditionsButton').on('click', function(e) {
+		e.preventDefault();
 		let userDate = $('#datePicked').val();
 		if (userDate) {
-			console.log('Checking conditions for ' + USERSPOT + ' on ' + userDate);
-			// getSunData(USERSPOT, userDate, displaySunData);
-			getForecast(USERSPOT, userDate, displayForecast);
+			console.log('Checking conditions for ' + STORE.userSpot + ' on ' + userDate);
+			getForecast(STORE.userSpot, userDate, displayForecast);
 		} else {
 			$('#datePicked').css('border', '2px solid red');
 		};
@@ -188,7 +194,7 @@ function getForecast(location, userDate, callback) {
 		url: 'https://api.apixu.com/v1/forecast.json',
 		data: {
 			key: '9e1547c7b1f049d9af1151052171812',
-			q: USERSPOT[0] + ', ' + USERSPOT[1],
+			q: STORE.userSpot[0] + ', ' + STORE.userSpot[1],
 			dt: userDate
 		},
 		dataType: 'JSON',
