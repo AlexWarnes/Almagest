@@ -5,9 +5,6 @@ const STORE = {
 	marker: null
 };
 
-// let USERSPOT = [];
-// let MARKER = null;
-
 function initMap() {
 	var map = new google.maps.Map(document.getElementById('map'), {
 		center: {lat: 38.80, lng: -90.04},
@@ -31,21 +28,13 @@ function initMap() {
 			return;
 		}
 
-		// For each place, get the icon, name and location.
+		// For each place, get location.
 		var bounds = new google.maps.LatLngBounds();
 		places.forEach(function(place) {
 			if (!place.geometry) {
 			console.log("Returned place contains no geometry");
 			return;
 			}
-		
-			var icon = {
-				url: place.icon,
-				size: new google.maps.Size(71, 71),
-				origin: new google.maps.Point(0, 0),
-				anchor: new google.maps.Point(17, 34),
-				scaledSize: new google.maps.Size(25, 25)
-			};
 
 			if (place.geometry.viewport) {
 				// Only geocodes have viewport.
@@ -79,8 +68,8 @@ function initMap() {
 
 
 	//HANDLE CLICKS:
-	//One Click drops a marker
-	//Double Click zooms in, but does NOT drop a marker using timeouts
+		//One Click drops a marker
+		//Double Click zooms in, but does NOT drop a marker
 
 	let update_timeout = null;
 
@@ -143,7 +132,7 @@ function placeMarker(latLng, map) {
 		STORE.userSpot.push(latLng.lat(), latLng.lng());
 		console.log(STORE.userSpot);
 	}
-	//Add a listener to our new marker that changes the USERSPOT 
+	//Add a listener to our new marker that changes the userSPOT 
 	//latLng if the marker is dragged. The page initializes without
 	//a marker, therefore we cannot add this listener until we
 	//create one, which is why it's inside this function
@@ -166,28 +155,6 @@ function checkConditions() {
 		};
 	});
 }
-
-// function getSunData(location, userDate, callback) {
-// 	const settings = {
-// 		url: 'https://api.sunrise-sunset.org/json',
-// 		data: {
-// 			lat: USERSPOT[0],
-// 			lng: USERSPOT[1],
-// 			date: userDate,
-// 			formatted: 1
-// 		},
-// 		dataType: 'JSON',
-// 		type: 'GET',
-// 		success: callback
-// 	}
-// 	$.ajax(settings);
-// }
-
-// function displaySunData(data) {
-// 	console.log(data);
-// 	$('.js-sunrise').text(`${data.results.sunrise} UTC`); 
-// 	$('.js-sunset').text(`${data.results.sunset} UTC`);
-// }
 
 function getForecast(location, userDate, callback) {
 	const settings = {

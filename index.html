@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8" name="Description" content="Almagest is a tool to help you plan your stargazing or astrophotography trips. A simple interface combines: light pollution maps, sunrise and sunset times, moonrise and moonset times, and forecast data.">
+	<meta charset="UTF-8" name="Description" content="Almagest is a tool to help you plan your stargazing or astrophotography trips. A simple interface combines light pollution maps, sunrise and sunset times, moonrise and moonset times, and forecast data.">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Almagest</title>
+	<link rel="icon" href="./Assets/bigdipper.png">
 
 	<!-- STYLES -->
 
@@ -19,9 +20,6 @@
 <body id="top">
 	<nav role="navigation">
 		<div class="row">
-			<!-- <div class="col-3"><a href="#">Data Sources</a></div> -->
-			<!-- <div class="col-3"><a href="#">Light Pollution</a></div> -->
-			<!-- <div class="col-3"><a href="#">Stargazing &amp; Astrophotography</a></div> -->
 			<div class="col-6"><a href="#education">Learn More</a></div>
 			<div class="col-6"><a href="https://github.com/AlexWarnes/Almagest" target="_blank">Sourcecode <i class="fab fa-github"></i></a></div>
 		</div>	
@@ -42,8 +40,8 @@
 		<div class="row">
 			<div class="col-12">
 				<section role="region" class="mapSection">
-					<h2>1. Click to drop a marker on your stargazing location</h2>
-					<div class="explanationBox">
+					<h2 id="findLocation">1. Click to drop a marker on your stargazing location</h2>
+					<div class="explanationBox mapExplanation">
 						<h3>How to use this map</h3>
 						<p>Reference the light pollution overlay to find a place near you with dark skies. Coverage here is limited to parts of North, Central, and South America. For worldwide coverage, see <a href="https://www.lightpollutionmap.info" target="_blank">this site</a>.</p>
 					</div>
@@ -52,7 +50,7 @@
 						<div class="legendSpectrum"></div>
 						<p class="legendText"><span class="legendLow">low</span><span class="legendSevere">severe</span></p>
 					</div>
-					<input id="mapSearch" class="controls" type="text" placeholder="Search to jump to an area">
+					<input id="mapSearch" class="controls" type="text" placeholder="Search to jump to an area" aria-labelledby="findLocation">
 					<div id="map"></div>
 					<p class="citation">Source: <a href="http://advances.sciencemag.org/content/2/6/e1600377" target="_blank">The New World Atlas of Artificial Night Sky Brightness</a></p>
 				</section>
@@ -60,29 +58,26 @@
 		</div>
 
 		<!-- DATE SELECT -->
-		<div class="row">
-			<div class="col-6">
-				<section role="region" class="dateSection">
-					<h2>2. Select a date</h2>
-					<input type="DATE" id="datePicked" placeholder="yyyy-mm-dd" required>
-					<p class="forecastWarning">*Forecast and data limited to next 10 days</p>
-				</section>
-			</div>
-		</div>
+		
+		<section role="region" class="dateSection">
+			<h2 id="dateSelect">2. Select a date</h2>
+			<input type="DATE" id="datePicked" placeholder="yyyy-mm-dd" aria-labelledby="dateSelect" required>
+			<p class="forecastWarning">*Forecast and data limited to next 10 days</p>
+		</section>
+		
 
-		<!-- CHECK CONDITIONS BUTTON & EXPLANATION -->
-		<div class="row">
-			<div class="col-6">
-				<h2>3. Get data</h2>
-				<button role="button" class="checkConditionsButton">Check Conditions  <i class="fas fa-list"></i></button>
-			</div>
-		</div>
+		<!-- CHECK CONDITIONS BUTTON -->
+
+		<section role="region" class="checkConditionsSection">
+			<h2>3. Get data</h2>
+			<button role="button" class="checkConditionsButton">Check Conditions  <i class="fas fa-list"></i></button>
+		</section>
+
 
 		<!-- CONDITION BOXES -->
-		<div class="row">
-
+			<section class="sunAndMoon">
 			<!-- SUN DATA -->
-			<div class="col-4">
+
 				<section role="region" class="sunInfo conditionBox">
 					<div class="conditionHeader">
 						<img class="conditionIcon" src="./Assets/sun.png" alt="sun">
@@ -93,7 +88,9 @@
 					<p class="citation">Source: <a href="https://www.apixu.com/" target="_blank">APIXU</a></p>
 				</section>
 
+
 			<!-- MOON DATA -->
+
 				<section role="region" class="moonInfo conditionBox">
 					<div class="conditionHeader">
 						<img class="conditionIcon" src="./Assets/moon.png" alt="moon">
@@ -101,45 +98,43 @@
 					</div>
 					<p>Moonrise: <span class="js-moonRise">--</span></p>
 					<p>Moonset: <span class="js-moonSet">--</span></p>
-					<!-- <p>Moon Phase: <span class="js-moonPhase">:(</span></p>
-					<p>Illumination: <span class="js-illumination">:(</span></p> -->
+					<!-- <p>Moon Phase: <span class="js-moonPhase"></span></p>
+					<p>Illumination: <span class="js-illumination"></span></p> -->
 					<p class="citation">Source: <a href="https://www.apixu.com/" target="_blank">APIXU</a></p>
 				</section>
-			</div>
+
+			</section>
 
 			<!-- FORECAST -->
-			<div class="col-6">
-				<section role="region" class="forecast conditionBox">
-					<div class="conditionHeader">
-						<img class="conditionIcon" src="./Assets/clouds.png" alt="clouds">
-						<h2>Forecast</h2>
-					</div>
-					<p>Evening Cloud Cover</p>
-					<ul class="cloudList">
-						<li class="cloudTime"><img class="icon cloudIcon7">7pm: <span class="js-clouds7">--</span> <span class="js-cloudCover7">--</span></li>
-						<li class="cloudTime"><img class="icon cloudIcon8"><span class="icon cloudIcon8"></span>8pm: <span class="js-clouds8">--</span> <span class="js-cloudCover8">--</span></li>
-						<li class="cloudTime"><img class="icon cloudIcon9"><span class="icon cloudIcon9"></span>9pm: <span class="js-clouds9">--</span> <span class="js-cloudCover9">--</span></li>
-						<li class="cloudTime"><img class="icon cloudIcon10"><span class="icon cloudIcon10"></span>10pm: <span class="js-clouds10">--</span> <span class="js-cloudCover10">--</span></li>
-						<li class="cloudTime"><img class="icon cloudIcon11"><span class="icon cloudIcon11"></span>11pm: <span class="js-clouds11">--</span> <span class="js-cloudCover11">--</span></li>
-					</ul>
-					<p>Temperature: <span class="js-temp">--</span></p>
-					<p>Humidity: <span class="js-humidity">--</span></p>
-					<p class="citation">Source: <a href="https://www.apixu.com/" target="_blank">APIXU</a></p>
-				</section>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-8">
-				<div class="explanationBox modal">
-					<h3>How to use this data <i class="fab fa-wpexplorer modalIcon"></i></h3>
-					<ul>
-						<li>Begin your stargazing at least an hour after sunset</li>
-						<li>Choose a time after moonset and before moonrise</li>
-						<li>Make sure the sky is mostly clear of clouds</li>
-					</ul>
+		<section class="forecast">
+			<section role="region" class="conditionBox">
+				<div class="conditionHeader">
+					<img class="conditionIcon" src="./Assets/clouds.png" alt="clouds">
+					<h2>Forecast</h2>
 				</div>
-			</div>
+				<p>Evening Cloud Cover</p>
+				<ul class="cloudList">
+					<li class="cloudTime"><img class="icon cloudIcon7">7pm: <span class="js-clouds7">--</span> <span class="js-cloudCover7">--</span></li>
+					<li class="cloudTime"><img class="icon cloudIcon8"><span class="icon cloudIcon8"></span>8pm: <span class="js-clouds8">--</span> <span class="js-cloudCover8">--</span></li>
+					<li class="cloudTime"><img class="icon cloudIcon9"><span class="icon cloudIcon9"></span>9pm: <span class="js-clouds9">--</span> <span class="js-cloudCover9">--</span></li>
+					<li class="cloudTime"><img class="icon cloudIcon10"><span class="icon cloudIcon10"></span>10pm: <span class="js-clouds10">--</span> <span class="js-cloudCover10">--</span></li>
+					<li class="cloudTime"><img class="icon cloudIcon11"><span class="icon cloudIcon11"></span>11pm: <span class="js-clouds11">--</span> <span class="js-cloudCover11">--</span></li>
+				</ul>
+				<p>Temperature: <span class="js-temp">--</span></p>
+				<p>Humidity: <span class="js-humidity">--</span></p>
+				<p class="citation">Source: <a href="https://www.apixu.com/" target="_blank">APIXU</a></p>
+			</section>
+		</section>
+
+		<div class="explanationBox dataExplanation">
+			<h3>How to use this data <i class="fab fa-wpexplorer explanationBoxIcon"></i></h3>
+			<ul>
+				<li>Begin your stargazing at least an hour after sunset</li>
+				<li>Choose a time after moonset and before moonrise</li>
+				<li>Make sure the sky is mostly clear of clouds</li>
+			</ul>
 		</div>
+
 		
 		<div class="toTop">
 			<a href="#top">Back to Top <i class="fas fa-chevron-circle-up"></i></a>
@@ -160,9 +155,9 @@
 		</section>
 		<section role="region" class="stargazingTips">
 			<div class="row">
-				<div class="col-10">
-					<div class="explanationBox modal">
-						<h3>New Stargazers<i class="fab fa-grav modalIcon"></i></h3>
+				<div class="col-12">
+					<div class="explanationBox">
+						<h3 id="dropStargazingBox">New Stargazers<i class="fab fa-grav explanationBoxIcon"></i></h3>
 						<ul>
 							<li>Parks make great stargazing locations, but some parks close after dark so call ahead.</li>
 							<li>Use a program like <a href="http://stellarium.org/" target="_blank">Stellarium</a> to see what's in the sky and where to look.</li>
@@ -175,9 +170,9 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-10">
-					<div class="explanationBox modal">
-						<h3>Astrophotography<i class="fas fa-camera modalIcon"></i></h3>
+				<div class="col-12">
+					<div class="explanationBox">
+						<h3>Astrophotography<i class="fas fa-camera explanationBoxIcon"></i></h3>
 						<p>If you have a DSLR, you can definitely take astrophotos! To give it a try, I've put together <a href="http://www.alexwarnes.com/resources.html" target="_blank">a page full of resources</a> that helped me get started.</p>
 						<p class="listHead">Quick DSLR Settings Reference:</p>
 						<ul>
@@ -203,9 +198,9 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-10">
-					<div class="explanationBox modal">
-						<h3>Resources<i class="fas fa-space-shuttle modalIcon"></i></h3>
+				<div class="col-12">
+					<div class="explanationBox">
+						<h3>Resources<i class="fas fa-space-shuttle explanationBoxIcon"></i></h3>
 						<ul>
 							<li><a href="https://www.youtube.com/playlist?list=PLTiv_XWHnOZrT_ppDGiT__fI3yjD4t7dI" target="_blank">What's Up?</a> - A monthly video from NASA Jet Propulsion Laboratory about what will be in the night sky this month.</li>
 							<li><a href="https://www.lonelyspeck.com" target="_blank">Lonely Speck</a> - Astrophotography tutorials, tools, gear + inspiration</li>
