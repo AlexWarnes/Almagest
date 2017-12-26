@@ -36,7 +36,7 @@ a:hover {
 }
 
 .toTop {
-	margin: 30px auto;
+	margin: 50px auto;
 	font-size: 16px;
 	text-align: center;
 }
@@ -57,9 +57,9 @@ nav a {
 
 header {
 	width: 100%;
-	height: 70vh;
+	height: 80vh;
 	margin: 0 auto 0 auto;
-	padding: 1px 0 20px 50px;
+	padding: 1px 0 20px 10%;
 	background-color: gray;
 	background-image:
 		-webkit-linear-gradient(to right, rgba(27, 35, 51, 1), rgba(8, 43, 68, 0.4)),
@@ -160,8 +160,6 @@ p.citation {
 }
 
 #map {
-	/*Always set the map height explicitly to define the 
-	size of the div element that contains the map.*/
 	width: 100%;
 	height: 400px;
 	border-radius: 5px;
@@ -271,18 +269,6 @@ section.sunAndMoon {
 	display: inline-block;
 	margin: 0 0 0 10px;
 
-}
-
-@media only screen and (max-width: 640px) {
-	section.sunAndMoon {
-		margin-top: 15px;
-	}
-
-	.sunInfo, .moonInfo {
-		display: block;
-		width: 90%;
-		margin: 20px auto 0 auto;
-	}
 }
 
 .forecast {
@@ -408,7 +394,38 @@ footer a {
 }
 
 @media only screen and (max-width: 640px) {
+	header {
+		width: 100%;
+		height: 70vh;
+		margin: 0 auto 0 auto;
+		padding: 1px 0 20px 50px;
+		background-color: gray;
+		background-image:
+			-webkit-linear-gradient(to right, rgba(27, 35, 51, 1), rgba(8, 43, 68, 0.4)),
+			url('./Assets/MW_Core2.jpg');
+		background-image:
+			-o-linear-gradient(to right, rgba(27, 35, 51, 1), rgba(8, 43, 68, 0.4)),
+			url('./Assets/MW_Core2.jpg');
+		background-image:
+			linear-gradient(to right, rgba(27, 35, 51, 1), rgba(8, 43, 68, 0.4)),
+			url('./Assets/MW_Core2.jpg');
+		background-size: cover;
+		background-position: center right;
+		background-repeat: no-repeat;
+		color: white;
+	}
+
 	#mapSearch {
 		width: 100%;
+	}
+
+	section.sunAndMoon {
+		margin-top: 15px;
+	}
+
+	.sunInfo, .moonInfo {
+		display: block;
+		width: 90%;
+		margin: 20px auto 0 auto;
 	}
 }
