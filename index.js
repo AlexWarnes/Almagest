@@ -5,6 +5,10 @@ const STORE = {
 	marker: null
 };
 
+//Initialize map with overlays 
+//Listen for input in the map search box 
+//Listen for click events
+
 function initMap() {
 	var map = new google.maps.Map(document.getElementById('map'), {
 		center: {lat: 38.80, lng: -90.04},
@@ -115,9 +119,11 @@ function initMap() {
 
 //ADDING A MARKER
 	//If there is no marker when this function is called, then 
-	//we create one at the click point latLng that is passed when 
-	//called (see click events above). Or else just set the position
-	//of marker that already exists to the new latLng of click.
+	//we create one from the latLng of the click or search. If 
+	//there is a marker, then we set the position of the marker 
+	//that already exists to the new latLng of click. This avoids
+	//making multiple markers.
+
 function placeMarker(latLng, map) {
 	if (!STORE.marker) {
 		STORE.marker = new google.maps.Marker({
@@ -132,7 +138,8 @@ function placeMarker(latLng, map) {
 		STORE.userSpot.push(latLng.lat(), latLng.lng());
 		console.log(STORE.userSpot);
 	}
-	//Add a listener to our new marker that changes the userSPOT 
+
+	//Add a listener to our new marker that changes the userSpot 
 	//latLng if the marker is dragged. The page initializes without
 	//a marker, therefore we cannot add this listener until we
 	//create one, which is why it's inside this function
@@ -143,6 +150,8 @@ function placeMarker(latLng, map) {
 	});
 }
 
+//Handle click on the Check Conditions button by passing
+//our STORE info to our API request
 function checkConditions() {
 	$('.checkConditionsButton').on('click', function(e) {
 		e.preventDefault();
@@ -156,6 +165,7 @@ function checkConditions() {
 	});
 }
 
+//Request data from API
 function getForecast(location, userDate, callback) {
 	const settings = {
 		url: 'https://api.apixu.com/v1/forecast.json',
@@ -171,6 +181,7 @@ function getForecast(location, userDate, callback) {
 	$.ajax(settings);
 }
 
+//Display API data on the page
 function displayForecast(data) {
 	console.log(data);
 	$('.js-sunrise').text(`${data.forecast.forecastday["0"].astro.sunrise}`); 
@@ -205,4 +216,3 @@ function displayForecast(data) {
 }
 
 $(checkConditions);
-

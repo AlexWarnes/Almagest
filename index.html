@@ -18,6 +18,7 @@
 			<link rel="stylesheet" href="gridrules.css">
 </head>
 <body id="top">
+	
 	<nav role="navigation">
 		<div class="row">
 			<div class="col-6"><a href="#education">Stargazing 101</a></div>
@@ -36,7 +37,9 @@
 	</header>
 
 	<main role="main">
+
 		<!-- MAP -->
+
 		<div class="row">
 			<div class="col-12">
 				<section role="region" class="mapSection">
@@ -66,7 +69,7 @@
 		</section>
 		
 
-		<!-- CHECK CONDITIONS BUTTON -->
+		<!-- CHECK CONDITIONS -->
 
 		<section role="region" class="checkConditionsSection">
 			<h2>3. Get data</h2>
@@ -74,38 +77,35 @@
 		</section>
 
 
-		<!-- CONDITION BOXES -->
-			<section class="sunAndMoon">
+		<!-- SUN & MOON CONDITION BOXES -->
+
+		<section class="sunAndMoon">
+
 			<!-- SUN DATA -->
-
-				<section role="region" class="sunInfo conditionBox">
-					<div class="conditionHeader">
-						<img class="conditionIcon" src="./Assets/sun.png" alt="sun">
-						<h2>Sun Info</h2>
-					</div>
-					<p>Sunrise: <span class="js-sunrise">--</span></p>
-					<p>Sunset: <span class="js-sunset">--</span></p>
-					<p class="citation">Source: <a href="https://www.apixu.com/" target="_blank">APIXU</a></p>
-				</section>
-
-
-			<!-- MOON DATA -->
-
-				<section role="region" class="moonInfo conditionBox">
-					<div class="conditionHeader">
-						<img class="conditionIcon" src="./Assets/moon.png" alt="moon">
-						<h2>Moon Info</h2>
-					</div>
-					<p>Moonrise: <span class="js-moonRise">--</span></p>
-					<p>Moonset: <span class="js-moonSet">--</span></p>
-					<!-- <p>Moon Phase: <span class="js-moonPhase"></span></p>
-					<p>Illumination: <span class="js-illumination"></span></p> -->
-					<p class="citation">Source: <a href="https://www.apixu.com/" target="_blank">APIXU</a></p>
-				</section>
-
+			<section role="region" class="sunInfo conditionBox">
+				<div class="conditionHeader">
+					<img class="conditionIcon" src="./Assets/sun.png" alt="sun">
+					<h2>Sun Info</h2>
+				</div>
+				<p>Sunrise: <span class="js-sunrise">--</span></p>
+				<p>Sunset: <span class="js-sunset">--</span></p>
+				<p class="citation">Source: <a href="https://www.apixu.com/" target="_blank">APIXU</a></p>
 			</section>
 
-			<!-- FORECAST -->
+			<!-- MOON DATA -->
+			<section role="region" class="moonInfo conditionBox">
+				<div class="conditionHeader">
+					<img class="conditionIcon" src="./Assets/moon.png" alt="moon">
+					<h2>Moon Info</h2>
+				</div>
+				<p>Moonrise: <span class="js-moonRise">--</span></p>
+				<p>Moonset: <span class="js-moonSet">--</span></p>
+				<p class="citation">Source: <a href="https://www.apixu.com/" target="_blank">APIXU</a></p>
+			</section>
+
+		</section>
+
+		<!-- FORECAST BOX -->
 		<section class="forecast">
 			<section role="region" class="conditionBox">
 				<div class="conditionHeader">
@@ -114,11 +114,16 @@
 				</div>
 				<p>Evening Cloud Cover</p>
 				<ul class="cloudList">
-					<li class="cloudTime"><img class="icon cloudIcon7">7pm: <span class="js-clouds7">--</span> <span class="js-cloudCover7">--</span></li>
-					<li class="cloudTime"><img class="icon cloudIcon8"><span class="icon cloudIcon8"></span>8pm: <span class="js-clouds8">--</span> <span class="js-cloudCover8">--</span></li>
-					<li class="cloudTime"><img class="icon cloudIcon9"><span class="icon cloudIcon9"></span>9pm: <span class="js-clouds9">--</span> <span class="js-cloudCover9">--</span></li>
-					<li class="cloudTime"><img class="icon cloudIcon10"><span class="icon cloudIcon10"></span>10pm: <span class="js-clouds10">--</span> <span class="js-cloudCover10">--</span></li>
-					<li class="cloudTime"><img class="icon cloudIcon11"><span class="icon cloudIcon11"></span>11pm: <span class="js-clouds11">--</span> <span class="js-cloudCover11">--</span></li>
+					<li class="cloudTime">
+						<img class="icon cloudIcon7" alt=""> 7pm: <span class="js-clouds7">--</span> <span class="js-cloudCover7">--</span></li>
+					<li class="cloudTime">
+						<img class="icon cloudIcon8" alt=""> 8pm: <span class="js-clouds8">--</span> <span class="js-cloudCover8">--</span></li>
+					<li class="cloudTime">
+						<img class="icon cloudIcon9" alt=""> 9pm: <span class="js-clouds9">--</span> <span class="js-cloudCover9">--</span></li>
+					<li class="cloudTime">
+						<img class="icon cloudIcon10" alt=""> 10pm: <span class="js-clouds10">--</span> <span class="js-cloudCover10">--</span></li>
+					<li class="cloudTime">
+						<img class="icon cloudIcon11" alt=""> 11pm: <span class="js-clouds11">--</span> <span class="js-cloudCover11">--</span></li>
 				</ul>
 				<p>Temperature: <span class="js-temp">--</span></p>
 				<p>Humidity: <span class="js-humidity">--</span></p>
@@ -139,6 +144,7 @@
 		<div class="toTop">
 			<a href="#top">Back to Top <i class="fas fa-chevron-circle-up"></i></a>
 		</div>
+
 	<!-- EDUCATIONAL SECTION -->
 
 		<section role="region" class="educationBanner" id="education">
@@ -216,7 +222,7 @@
 	</main>
 
 	<div class="toTop">
-			<a href="#top">Back to Top <i class="fas fa-chevron-circle-up"></i></a>
+		<a href="#top">Back to Top <i class="fas fa-chevron-circle-up"></i></a>
 	</div>
 
 	<footer role="contentinfo">
