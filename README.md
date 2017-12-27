@@ -38,6 +38,6 @@ The light pollution data uses semi-transparent PNGs as
 The overlay is from [The New World Atlas of Artificial Night Sky Brightness](http://advances.sciencemag.org/content/2/6/e1600377 "The New World Atlas of Artificial Night Sky Brightness").
 
 ## Feedback?
-This is a living project, so I'd love to hear from you. I have plenty of ideas for future iterations, but if there's anything you love, hate, or think would be helpful to have, feel free to shoot me a message.
+This is a living project, so I'd love to hear from you. I have a lot of ideas for future iterations, so if there's anything you love, hate, or think would be helpful to have, feel free to shoot me a message. It will help me prioritize :-)
 
 Enjoy the stars! - A
