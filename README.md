@@ -37,4 +37,7 @@ The light pollution data uses semi-transparent PNGs as
 [Ground Overlays](https://developers.google.com/maps/documentation/javascript/examples/groundoverlay-simple "Using Ground Overlays"). 
 The overlay is from [The New World Atlas of Artificial Night Sky Brightness](http://advances.sciencemag.org/content/2/6/e1600377 "The New World Atlas of Artificial Night Sky Brightness").
 
-#### Enjoy the stars! - A
+## Feedback?
+This is a living project, so I'd love to hear from you. I have plenty of ideas for future iterations, but if there's anything you love, hate, or think would be helpful to have, feel free to shoot me a message.
+
+Enjoy the stars! - A
