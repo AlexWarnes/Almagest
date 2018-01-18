@@ -158,6 +158,7 @@ function checkConditions() {
 		let userDate = $('#datePicked').val();
 		if (userDate) {
 			console.log('Checking conditions for ' + STORE.userSpot + ' on ' + userDate);
+			getSunMoon(STORE.userSpot, userDate, displaySunMoon)
 			getForecast(STORE.userSpot, userDate, displayForecast);
 		} else {
 			$('#datePicked').css('border', '2px solid red');
@@ -166,13 +167,54 @@ function checkConditions() {
 }
 
 //Request data from API
+function getSunMoon(location, userDate, callback) {
+	const settings = {
+		url: 'https://api.aerisapi.com/sunmoon/',
+		data: {
+			p: STORE.userSpot[0] + ', ' + STORE.userSpot[1],
+			from: userDate,
+			client_id: 'YHbMRdDmHOPtUE4pkMa6n',
+			client_secret: '0TG073211wIYRFlzU5ldljPIRs93v1f0LGLjMDAv',
+		},
+		dataType: 'JSON',
+		type: 'GET',
+		success: callback
+	};
+	$.ajax(settings);	
+}
+
+function convertTime(isoString) {
+	return isoString.slice(11, 16);
+}
+
+function displaySunMoon(data) {
+	console.log('Sun and Moon Data');
+	console.log(data);
+
+	const sunrise = convertTime(data.response[0].sun.riseISO);
+	const sunset = convertTime(data.response[0].sun.setISO);
+	const moonRise = convertTime(data.response[0].moon.riseISO);
+	const moonSet = convertTime(data.response[0].moon.setISO);
+
+	$('.js-sunrise').text(sunrise);
+	$('.js-sunset').text(sunset);
+	
+	$('.js-moonRise').text(moonRise);
+	$('.js-moonSet').text(moonSet);
+	//Add moonPhase and illumination
+}
+
 function getForecast(location, userDate, callback) {
 	const settings = {
-		url: 'https://api.apixu.com/v1/forecast.json',
+		url: 'https://api.aerisapi.com/forecasts',
 		data: {
-			key: '9e1547c7b1f049d9af1151052171812',
-			q: STORE.userSpot[0] + ', ' + STORE.userSpot[1],
-			dt: userDate
+			p: STORE.userSpot[0] + ', ' + STORE.userSpot[1],
+			from: userDate,
+			filter: '1hr',
+			limit: 5,
+			skip: 19,
+			client_id: 'YHbMRdDmHOPtUE4pkMa6n',
+			client_secret: '0TG073211wIYRFlzU5ldljPIRs93v1f0LGLjMDAv',
 		},
 		dataType: 'JSON',
 		type: 'GET',
@@ -183,36 +225,32 @@ function getForecast(location, userDate, callback) {
 
 //Display API data on the page
 function displayForecast(data) {
+	console.log('Forecast Data');
 	console.log(data);
-	$('.js-sunrise').text(`${data.forecast.forecastday["0"].astro.sunrise}`); 
-	$('.js-sunset').text(`${data.forecast.forecastday["0"].astro.sunset}`);
-	
-	$('.js-moonRise').text(`${data.forecast.forecastday["0"].astro.moonrise}`);
-	$('.js-moonSet').text(`${data.forecast.forecastday["0"].astro.moonset}`);
 
-	$('.cloudIcon7').attr('src', `https:${data.forecast.forecastday["0"].hour["19"].condition.icon}`);
-	$('.js-clouds7').text(`${data.forecast.forecastday["0"].hour["19"].condition.text}`);
-	$('.js-cloudCover7').text(`(${data.forecast.forecastday["0"].hour["19"].cloud}%)`);
+	$('.cloudIcon7').attr('src', `https://www.aerisweather.com/img/docs/${data.response[0].periods[0].icon}`);
+	$('.js-clouds7').text(`${data.response[0].periods[0].weather}`);
+	$('.js-cloudCover7').text(`(${data.response[0].periods[0].sky}% cloud cover)`);
 
-	$('.cloudIcon8').attr('src', `https:${data.forecast.forecastday["0"].hour["20"].condition.icon}`);
-	$('.js-clouds8').text(`${data.forecast.forecastday["0"].hour["20"].condition.text}`);
-	$('.js-cloudCover8').text(`(${data.forecast.forecastday["0"].hour["20"].cloud}%)`);
+	$('.cloudIcon8').attr('src', `https://www.aerisweather.com/img/docs/${data.response[0].periods[1].icon}`);
+	$('.js-clouds8').text(`${data.response[0].periods[1].weather}`);
+	$('.js-cloudCover8').text(`(${data.response[0].periods[1].sky}% cloud cover)`);
 
-	$('.cloudIcon9').attr('src', `https:${data.forecast.forecastday["0"].hour["21"].condition.icon}`);
-	$('.js-clouds9').text(`${data.forecast.forecastday["0"].hour["21"].condition.text}`);
-	$('.js-cloudCover9').text(`(${data.forecast.forecastday["0"].hour["21"].cloud}%)`);
+	$('.cloudIcon9').attr('src', `https://www.aerisweather.com/img/docs/${data.response[0].periods[2].icon}`);
+	$('.js-clouds9').text(`${data.response[0].periods[2].weather}`);
+	$('.js-cloudCover9').text(`(${data.response[0].periods[2].sky}% cloud cover)`);
 
-	$('.cloudIcon10').attr('src', `https:${data.forecast.forecastday["0"].hour["22"].condition.icon}`);
-	$('.js-clouds10').text(`${data.forecast.forecastday["0"].hour["22"].condition.text}`);
-	$('.js-cloudCover10').text(`(${data.forecast.forecastday["0"].hour["22"].cloud}%)`);
+	$('.cloudIcon10').attr('src', `https://www.aerisweather.com/img/docs/${data.response[0].periods[3].icon}`);
+	$('.js-clouds10').text(`${data.response[0].periods[3].weather}`);
+	$('.js-cloudCover10').text(`(${data.response[0].periods[3].sky}% cloud cover)`);
 
-	$('.cloudIcon11').attr('src', `https:${data.forecast.forecastday["0"].hour["23"].condition.icon}`);
-	$('.js-clouds11').text(`${data.forecast.forecastday["0"].hour["23"].condition.text}`);
-	$('.js-cloudCover11').text(`(${data.forecast.forecastday["0"].hour["23"].cloud}%)`);
+	$('.cloudIcon11').attr('src', `https://www.aerisweather.com/img/docs/${data.response[0].periods[4].icon}`);
+	$('.js-clouds11').text(`${data.response[0].periods[4].weather}`);
+	$('.js-cloudCover11').text(`(${data.response[0].periods[4].sky}% cloud cover)`);
 
 
-	$('.js-temp').text(`${data.forecast.forecastday["0"].day.maxtemp_f}/${data.forecast.forecastday["0"].day.mintemp_f} F`);
-	$('.js-humidity').text(`${data.forecast.forecastday["0"].day.avghumidity}`);
+	$('.js-temp').text(`${data.response[0].periods[0].maxTempF}/${data.response[0].periods[4].minTempF} F`);
+	$('.js-humidity').text(`${data.response[0].periods[0].humidity}`);
 }
 
 $(checkConditions);
