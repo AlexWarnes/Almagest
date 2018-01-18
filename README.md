@@ -30,7 +30,7 @@ a ground overlay to display light pollution data on the map.
 ### API List
   * [Google Maps](https://developers.google.com/maps/ "Google Maps API")
   * [Google Places](https://developers.google.com/places/ "Google Places API")
-  * [APIXU](https://www.apixu.com/ "APIXU Weather API")
+  * [AERIS Weather](https://www.aerisweather.com/ "AERIS Weather API")
 
 ### Ground Overlay with Google Maps
 The light pollution data uses semi-transparent PNGs as
